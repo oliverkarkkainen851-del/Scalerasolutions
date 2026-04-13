@@ -18,6 +18,15 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-inner">
+      <img src="assets/logo.webp" alt="Scalera Solutions logo" class="loader-logo" />
+      <div class="loader-line">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
   <div class="bg-grid"></div>
   <div class="bg-orb orb-1"></div>
   <div class="bg-orb orb-2"></div>
@@ -53,7 +62,7 @@
   </header>
 
   <main>
-    <section class="hero section">
+    <section class="hero section reveal">
       <div class="container hero-layout">
         <div class="hero-copy">
           <div class="eyebrow" data-i18n="heroEyebrow">AUTOCLIENT B2B-MYYNNIN ALKUVAIHEESEEN</div>
@@ -98,16 +107,19 @@
                 <strong>2,184</strong>
                 <small data-i18n="metric1Text">Ajantasainen tietokanta</small>
               </div>
+
               <div class="metric-box">
                 <span data-i18n="metric2Label">Liidejä kontaktoitu</span>
                 <strong>1,024</strong>
                 <small data-i18n="metric2Text">Validoitu ennen lähetystä</small>
               </div>
+
               <div class="metric-box">
                 <span data-i18n="metric3Label">Tapaamisia buukattu</span>
                 <strong>26</strong>
                 <small data-i18n="metric3Text">Korkean intentin liidejä</small>
               </div>
+
               <div class="metric-box">
                 <span data-i18n="metric4Label">Aikaa säästetty</span>
                 <strong>74h</strong>
@@ -152,7 +164,9 @@
                   <span data-i18n="bar1Label">Avausaste</span>
                   <strong>54%</strong>
                 </div>
-                <div class="chart-track"><div class="chart-fill blue-fill" style="width:54%"></div></div>
+                <div class="chart-track">
+                  <div class="chart-fill blue-fill" style="width:54%"></div>
+                </div>
               </div>
 
               <div class="chart-row">
@@ -160,7 +174,9 @@
                   <span data-i18n="bar2Label">Vastausaste</span>
                   <strong>17%</strong>
                 </div>
-                <div class="chart-track"><div class="chart-fill purple-fill" style="width:17%"></div></div>
+                <div class="chart-track">
+                  <div class="chart-fill purple-fill" style="width:17%"></div>
+                </div>
               </div>
 
               <div class="chart-row">
@@ -168,7 +184,9 @@
                   <span data-i18n="bar3Label">Tapaamiskonversio</span>
                   <strong>8%</strong>
                 </div>
-                <div class="chart-track"><div class="chart-fill" style="width:8%"></div></div>
+                <div class="chart-track">
+                  <div class="chart-fill" style="width:8%"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -186,7 +204,7 @@
       </div>
     </section>
 
-    <section class="trust-strip">
+    <section class="trust-strip reveal">
       <div class="container trust-strip-inner">
         <span data-i18n="strip1">Suunniteltu moderneille B2B-tiimeille</span>
         <span data-i18n="strip2">Ostosignaalit ja prospektointi</span>
@@ -196,7 +214,7 @@
       </div>
     </section>
 
-    <section class="section" id="product">
+    <section class="section reveal" id="product">
       <div class="container">
         <div class="section-heading narrow">
           <div class="eyebrow" data-i18n="productEyebrow">MITÄ AUTOCLIENT TEKEE</div>
@@ -208,7 +226,7 @@
         </div>
 
         <div class="benefit-grid">
-          <article class="card benefit-card">
+          <article class="card benefit-card tilt-card">
             <h3 data-i18n="productCard1Title">Vähemmän käsityötä</h3>
             <p data-i18n="productCard1Text">
               Prospektointi, rikastus ja outboundin rutiinit eivät jää enää
@@ -216,7 +234,7 @@
             </p>
           </article>
 
-          <article class="card benefit-card">
+          <article class="card benefit-card tilt-card">
             <h3 data-i18n="productCard2Title">Ajankohtaisemmat liidit</h3>
             <p data-i18n="productCard2Text">
               Ostosignaalit auttavat tunnistamaan, keihin kannattaa olla
@@ -224,7 +242,7 @@
             </p>
           </article>
 
-          <article class="card benefit-card">
+          <article class="card benefit-card tilt-card">
             <h3 data-i18n="productCard3Title">Parempi näkyvyys</h3>
             <p data-i18n="productCard3Text">
               Dashboard ja integraatiot tekevät prosessista läpinäkyvän ja helposti seurattavan.
@@ -234,7 +252,7 @@
       </div>
     </section>
 
-    <section class="section alt-section" id="showcase">
+    <section class="section alt-section reveal" id="showcase">
       <div class="container">
         <div class="section-heading">
           <div class="eyebrow" data-i18n="showcaseEyebrow">DASHBOARD</div>
@@ -246,7 +264,7 @@
         </div>
 
         <div class="showcase-top-grid">
-          <div class="card feature-highlight-card">
+          <div class="card feature-highlight-card tilt-card">
             <span class="mini-label" data-i18n="showcaseBox1Label">Selkeä käyttöliittymä</span>
             <h3 data-i18n="showcaseBox1Title">Dashboard, joka tekee prosessista läpinäkyvän</h3>
             <p data-i18n="showcaseBox1Text">
@@ -255,7 +273,7 @@
             </p>
           </div>
 
-          <div class="card feature-highlight-card">
+          <div class="card feature-highlight-card tilt-card">
             <span class="mini-label" data-i18n="showcaseBox2Label">Parempi päätöksenteko</span>
             <h3 data-i18n="showcaseBox2Title">Data auttaa optimoimaan strategiaa</h3>
             <p data-i18n="showcaseBox2Text">
@@ -266,7 +284,7 @@
         </div>
 
         <div class="gallery-grid">
-          <article class="card gallery-card gallery-card-large">
+          <article class="card gallery-card gallery-card-large tilt-card">
             <img src="assets/dashboard-login.webp" alt="AutoClient kirjautumisnäkymä" class="gallery-image" />
             <div class="gallery-copy">
               <h3 data-i18n="gallery1Title">Kirjautuminen ja käyttöliittymä</h3>
@@ -276,7 +294,7 @@
             </div>
           </article>
 
-          <article class="card gallery-card">
+          <article class="card gallery-card tilt-card">
             <img src="assets/dashboard-table.webp" alt="AutoClient yritys- ja kontaktinäkymä" class="gallery-image" />
             <div class="gallery-copy">
               <h3 data-i18n="gallery2Title">Yritykset, kontaktit ja syväanalyysi</h3>
@@ -286,7 +304,7 @@
             </div>
           </article>
 
-          <article class="card gallery-card">
+          <article class="card gallery-card tilt-card">
             <img src="assets/dashboard-analytics.webp" alt="AutoClient analytiikkanäkymä" class="gallery-image" />
             <div class="gallery-copy">
               <h3 data-i18n="gallery3Title">Analytiikka ja visualisoinnit</h3>
@@ -299,7 +317,7 @@
       </div>
     </section>
 
-    <section class="section" id="features">
+    <section class="section reveal" id="features">
       <div class="container">
         <div class="section-heading">
           <div class="eyebrow" data-i18n="featuresEyebrow">OMINAISUUDET</div>
@@ -311,37 +329,37 @@
         </div>
 
         <div class="feature-grid">
-          <article class="card feature-card">
+          <article class="card feature-card tilt-card">
             <span class="feature-number">01</span>
             <h3 data-i18n="f1Title">Prospektitietokanta</h3>
             <p data-i18n="f1Text">Rakentaa asiakasprofiiliinne perustuvan tietokannan yrityksistä ja päättäjistä.</p>
           </article>
 
-          <article class="card feature-card">
+          <article class="card feature-card tilt-card">
             <span class="feature-number">02</span>
             <h3 data-i18n="f2Title">Ostosignaalihaku</h3>
             <p data-i18n="f2Text">Päivittää dataa säännöllisesti ja auttaa löytämään ajankohtaiset prospektit.</p>
           </article>
 
-          <article class="card feature-card">
+          <article class="card feature-card tilt-card">
             <span class="feature-number">03</span>
             <h3 data-i18n="f3Title">Datan rikastus</h3>
             <p data-i18n="f3Text">Analysoi prospektin tilannetta, kipupisteitä ja prioriteettia ennen yhteydenottoa.</p>
           </article>
 
-          <article class="card feature-card">
+          <article class="card feature-card tilt-card">
             <span class="feature-number">04</span>
             <h3 data-i18n="f4Title">Personoidut viestit</h3>
             <p data-i18n="f4Text">Viestit kirjoitetaan teidän kontekstilla, teidän mallien ja strategian pohjalta.</p>
           </article>
 
-          <article class="card feature-card">
+          <article class="card feature-card tilt-card">
             <span class="feature-number">05</span>
             <h3 data-i18n="f5Title">Jatkuva outbound</h3>
             <p data-i18n="f5Text">Follow-upit, uudelleenkontaktointi ja useiden päättäjien lähestyminen kuuluvat prosessiin.</p>
           </article>
 
-          <article class="card feature-card">
+          <article class="card feature-card tilt-card">
             <span class="feature-number">06</span>
             <h3 data-i18n="f6Title">Dashboard ja CRM</h3>
             <p data-i18n="f6Text">Kaikki data, aktiviteetit ja suorituskyky näkyvät selkeästi yhdessä paikassa.</p>
@@ -350,7 +368,7 @@
       </div>
     </section>
 
-    <section class="section alt-section">
+    <section class="section alt-section reveal">
       <div class="container split-wrap">
         <div class="split-left">
           <div class="section-heading">
@@ -364,7 +382,7 @@
         </div>
 
         <div class="split-grid">
-          <div class="card simple-card">
+          <div class="card simple-card tilt-card">
             <h3 data-i18n="whatWeHandleTitle">Mitä AutoClient hoitaa</h3>
             <ul class="check-list">
               <li data-i18n="wh1">Prospektien etsintä ja tietokannan ylläpito</li>
@@ -376,7 +394,7 @@
             </ul>
           </div>
 
-          <div class="card simple-card">
+          <div class="card simple-card tilt-card">
             <h3 data-i18n="yourTeamTitle">Mihin teidän tiimi keskittyy</h3>
             <ul class="check-list">
               <li data-i18n="yt1">Tarjouksen ja kohderyhmän suunta</li>
@@ -394,7 +412,7 @@
       </div>
     </section>
 
-    <section class="section" id="pricing">
+    <section class="section reveal" id="pricing">
       <div class="container">
         <div class="section-heading">
           <div class="eyebrow" data-i18n="pricingEyebrow">HINNOITTELU</div>
@@ -406,7 +424,7 @@
         </div>
 
         <div class="pricing-grid">
-          <article class="card pricing-card">
+          <article class="card pricing-card tilt-card">
             <div class="plan-name" data-i18n="planPilot">Pilotti</div>
             <h3>500€<span data-i18n="planVat"> + alv</span></h3>
             <p class="plan-sub" data-i18n="pilotSub">Matala kynnys testata konsepti käytännössä</p>
@@ -418,7 +436,7 @@
             </ul>
           </article>
 
-          <article class="card pricing-card featured">
+          <article class="card pricing-card featured tilt-card">
             <div class="featured-badge" data-i18n="featuredBadge">Suositeltu</div>
             <div class="plan-name">Basic</div>
             <h3>1800€<span data-i18n="planQuarter"> / 3 kk</span></h3>
@@ -433,7 +451,7 @@
             </ul>
           </article>
 
-          <article class="card pricing-card">
+          <article class="card pricing-card tilt-card">
             <div class="plan-name" data-i18n="planScale">Laajennukset</div>
             <h3 data-i18n="customPlan">Custom</h3>
             <p class="plan-sub" data-i18n="customSub">Skaalataan tarpeen mukaan</p>
@@ -449,7 +467,7 @@
       </div>
     </section>
 
-    <section class="section alt-section" id="process">
+    <section class="section alt-section reveal" id="process">
       <div class="container">
         <div class="section-heading">
           <div class="eyebrow" data-i18n="processEyebrow">KÄYTTÖÖNOTTO</div>
@@ -460,25 +478,25 @@
         </div>
 
         <div class="process-grid">
-          <div class="card process-card">
+          <div class="card process-card tilt-card">
             <span class="timeline-step" data-i18n="day1">Päivä 2</span>
             <h3 data-i18n="proc1Title">Esitäytetty asiakas- ja ICP-lomake</h3>
             <p data-i18n="proc1Text">Lähetämme lomakkeen valmiiksi pohjustettuna, ja te tarkastatte sen.</p>
           </div>
 
-          <div class="card process-card">
+          <div class="card process-card tilt-card">
             <span class="timeline-step" data-i18n="day2">Päivä 4</span>
             <h3 data-i18n="proc2Title">Aloitustapaaminen</h3>
             <p data-i18n="proc2Text">Suunnitellaan yhteydenottostrategia, asiakassegmentit ja integraatiot.</p>
           </div>
 
-          <div class="card process-card">
+          <div class="card process-card tilt-card">
             <span class="timeline-step" data-i18n="day3">Päivä 6</span>
             <h3 data-i18n="proc3Title">Räätälöinti ja asiakasportaali</h3>
             <p data-i18n="proc3Text">AutoClient mukautetaan teidän tarpeisiin ja pääsette dashboardiin.</p>
           </div>
 
-          <div class="card process-card">
+          <div class="card process-card tilt-card">
             <span class="timeline-step" data-i18n="day4">Päivä 9</span>
             <h3 data-i18n="proc4Title">Prospektointi käyntiin</h3>
             <p data-i18n="proc4Text">Kaikki on valmista, prospektointi alkaa ja ensimmäiset viestit lähtevät pian.</p>
@@ -487,7 +505,7 @@
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section reveal" id="contact">
       <div class="container">
         <div class="cta-box">
           <div class="cta-copy">
@@ -501,7 +519,7 @@
 
           <div class="cta-actions">
             <a href="mailto:info@scalerasolutions.eu" class="btn btn-primary" data-i18n="ctaPrimary">Ota yhteyttä</a>
-            <a href="#" class="btn btn-secondary" data-i18n="ctaSecondary">Varaa keskustelu</a>
+            <a href="mailto:info@scalerasolutions.eu?subject=AutoClient%20demo" class="btn btn-secondary" data-i18n="ctaSecondary">Varaa keskustelu</a>
           </div>
         </div>
       </div>
