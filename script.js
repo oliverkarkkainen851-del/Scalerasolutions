@@ -8,13 +8,21 @@ const pageLoader = document.getElementById("pageLoader");
 const revealItems = document.querySelectorAll(".reveal");
 const header = document.getElementById("siteHeader");
 const cursorGlow = document.getElementById("cursorGlow");
-const heroDashboard = document.getElementById("heroDashboard");
 const navAnchorLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
 const galleryButtons = document.querySelectorAll(".gallery-open");
+
+const cardSlider = document.getElementById("cardSlider");
+const infoCards = document.querySelectorAll(".info-card");
+const sliderDots = document.querySelectorAll(".slider-dot");
+const prevCardBtn = document.getElementById("prevCard");
+const nextCardBtn = document.getElementById("nextCard");
+
+let currentSlide = 0;
+let autoSlideInterval = null;
 
 if (menuToggle && navLinks) {
   menuToggle.addEventListener("click", () => {
@@ -31,162 +39,108 @@ if (menuToggle && navLinks) {
 const translations = {
   fi: {
     navProduct: "Tuote",
+    navHow: "Miten toimii",
     navShowcase: "Dashboard",
-    navFeatures: "Ominaisuudet",
     navPricing: "Hinnoittelu",
-    navProcess: "Käyttöönotto",
     navContact: "Varaa keskustelu",
 
     heroEyebrow: "AUTOCLIENT B2B-MYYNNIN ALKUVAIHEESEEN",
-    heroTitle: "Vähemmän manuaalista työtä. Enemmän oikeita myyntikeskusteluja.",
-    heroText: "AutoClient rakentaa teille hallittavan outbound-järjestelmän: prospektit, ostosignaalit, personoidut yhteydenotot ja läpinäkyvä dashboard samassa kokonaisuudessa.",
+    heroTitle: "Myyntiä ilman manuaalista säätöä.",
+    heroText: "AutoClient löytää oikeat yritykset, tunnistaa ostosignaalit ja hoitaa outreachin – jotta myynti voi keskittyä klousaamiseen.",
     heroBtnPrimary: "Varaa demo",
-    heroBtnSecondary: "Katso dashboard",
+    heroBtnSecondary: "Katso miten toimii",
+    miniStat1: "prospektia löydetty",
+    miniStat2: "liidiä kontaktoitu",
+    miniStat3: "aikaa säästetty",
 
-    proof1Label: "Prospektit",
-    proof1Text: "Ajantasainen tietokanta",
-    proof2Label: "Kontaktoidut liidit",
-    proof2Text: "Validoitu ennen lähetystä",
-    proof3Label: "Aikaa säästetty",
-    proof3Text: "Manuaalinen työ vähenee",
-    scrollText: "Scrollaa alas",
+    sliderLabel: "Miksi AutoClient",
+    slide1Title: "Oikeat prospektit",
+    slide1Text: "AutoClient etsii yritykset ja päättäjät, jotka sopivat juuri teidän kohderyhmään.",
+    slide2Title: "Ostosignaalit",
+    slide2Text: "Tunnistaa yritykset, joilla on juuri nyt tarve tai ostovalmius.",
+    slide3Title: "Automaattinen outreach",
+    slide3Text: "Personoidut viestit ja follow-upit lähtevät automaattisesti.",
+    slide4Title: "Selkeä näkyvyys",
+    slide4Text: "Näet yhdestä paikasta mitä tapahtuu, mikä toimii ja mitä seuraavaksi tehdään.",
+    floatNoteLabel: "Nopeampi ensivaikutelma",
+    floatNoteTitle: "Selkeä arvolupaus heti",
 
-    dashboardLive: "Live",
-    metric1Label: "Prospektit löydetty",
-    metric1Text: "Ajantasainen tietokanta",
-    metric2Label: "Liidejä kontaktoitu",
-    metric2Text: "Validoitu ennen lähetystä",
-    metric3Label: "Tapaamisia buukattu",
-    metric3Text: "Korkean intentin liidejä",
-    metric4Label: "Aikaa säästetty",
-    metric4Text: "Manuaalinen työ vähenee",
-
-    lead1Text: "Ostosignaali: rekrytointi + laajentuminen",
-    lead2Text: "Päättäjä tunnistettu",
-    lead3Text: "Kampanjavalmis kontaktijoukko",
-    chartTitle: "Kampanjan suorituskyky",
-    chartRange: "Viimeiset 30 pv",
-    bar1Label: "Avausaste",
-    bar2Label: "Vastausaste",
-    bar3Label: "Tapaamiskonversio",
-    float1Title: "Pipeline näkyvissä",
-    float1Value: "Selkeä dashboard",
-    float2Title: "Prosessi rullaa",
-    float2Value: "Systemaattisesti",
-
-    strip1: "Suunniteltu moderneille B2B-tiimeille",
-    strip2: "Ostosignaalit ja prospektointi",
+    strip1: "Prospektitietokanta",
+    strip2: "Ostosignaalit",
     strip3: "Personoitu outbound",
-    strip4: "Läpinäkyvä analytiikka",
-    strip5: "CRM-valmis toimintamalli",
+    strip4: "Follow-up automaatio",
+    strip5: "Läpinäkyvä dashboard",
+    strip6: "CRM-valmis",
 
-    productEyebrow: "MITÄ AUTOCLIENT TEKEE",
-    productTitle: "Systemaattinen ratkaisu myyntiprosessin alkuvaiheeseen",
-    productText: "AutoClient auttaa poistamaan myynnin alkuvaiheen toistuvaa käsityötä ja rakentaa prosessin, joka tuottaa tasaisemmin uusia keskusteluja.",
+    productEyebrow: "YDINHYÖDYT",
+    productTitle: "Miksi AutoClient toimii käytännössä",
+    productText: "Tiivistetysti: vähemmän manuaalista työtä, ajankohtaisemmat liidit ja selkeämpi prosessi.",
     productCard1Title: "Vähemmän käsityötä",
-    productCard1Text: "Prospektointi, rikastus ja outboundin rutiinit eivät jää enää manuaalisen työn varaan.",
+    productCard1Text: "Prospektointi, rikastus ja outreach eivät jää enää myyjien manuaaliseksi työksi.",
     productCard2Title: "Ajankohtaisemmat liidit",
-    productCard2Text: "Ostosignaalit auttavat tunnistamaan, keihin kannattaa olla yhteydessä juuri nyt.",
+    productCard2Text: "Ostosignaalit nostavat esiin yritykset, joihin kannattaa olla yhteydessä juuri nyt.",
     productCard3Title: "Parempi näkyvyys",
-    productCard3Text: "Dashboard ja integraatiot tekevät prosessista läpinäkyvän ja helposti seurattavan.",
+    productCard3Text: "Kaikki data, kampanjat ja tulokset näkyvät yhdestä ympäristöstä.",
+
+    howEyebrow: "MITEN TOIMII",
+    howTitle: "Yksinkertainen virta alusta tapaamisiin",
+    howText: "AutoClient rakentuu muutamasta selkeästä vaiheesta, jotka yhdessä tekevät outboundista systemaattisempaa.",
+    flow1Title: "Prospektit",
+    flow1Text: "Rakennetaan teidän asiakasprofiiliin sopiva yritys- ja kontaktikanta.",
+    flow2Title: "Ostosignaalit",
+    flow2Text: "Tunnistetaan yritykset, joilla on juuri nyt relevantti tilanne tai tarve.",
+    flow3Title: "Outreach",
+    flow3Text: "Viestit, follow-upit ja kontaktit etenevät suunnitelmallisesti.",
+    flow4Title: "Tapaamiset",
+    flow4Text: "Myynti pääsee keskittymään keskusteluihin ja klousaamiseen.",
 
     showcaseEyebrow: "DASHBOARD",
-    showcaseTitle: "AutoClient käytännössä",
-    showcaseText: "Asiakasportaali näyttää kampanjat, yritykset, kontaktit, syväanalyysin ja visualisoinnit yhdestä ympäristöstä.",
+    showcaseTitle: "Kun haluat nähdä syvemmälle, dashboard näyttää kaiken",
+    showcaseText: "Heti alussa emme kuormita käyttäjää dashboardilla, mutta alempana se toimii vahvana todisteena tuotteen vakavuudesta ja läpinäkyvyydestä.",
     showcaseBox1Label: "Selkeä käyttöliittymä",
-    showcaseBox1Title: "Dashboard, joka tekee prosessista läpinäkyvän",
-    showcaseBox1Text: "Näet mitä tapahtuu, mitä on tehty, ketkä ovat seuraavat prioriteetit ja miten kampanjat oikeasti suoriutuvat.",
+    showcaseBox1Title: "Näet heti mitä tapahtuu",
+    showcaseBox1Text: "Kampanjat, löydetyt yritykset, kontaktit ja tilannekuva pysyvät yhdessä paikassa.",
     showcaseBox2Label: "Parempi päätöksenteko",
-    showcaseBox2Title: "Data auttaa optimoimaan strategiaa",
-    showcaseBox2Text: "Yritysten tila, kontaktit, reply-prosentit ja visualisoinnit tekevät kehityskohdista nopeasti näkyviä.",
+    showcaseBox2Title: "Data auttaa kehittämään prosessia",
+    showcaseBox2Text: "Vastaukset, reply-rate, analyysit ja visualisoinnit kertovat nopeasti mikä toimii.",
     gallery1Title: "Kirjautuminen ja käyttöliittymä",
     gallery1Text: "Selkeä ja moderni portaali, josta kokonaisuus avautuu heti hallittavana.",
-    gallery2Title: "Yritykset, kontaktit ja syväanalyysi",
-    gallery2Text: "Kampanjat, löydetyt yritykset, kontaktit ja yrityskohtainen analyysi samassa näkymässä.",
-    gallery3Title: "Analytiikka ja visualisoinnit",
-    gallery3Text: "Toimialajakaumat, aluekartta ja muu data auttavat optimoinnissa.",
-
-    featuresEyebrow: "OMINAISUUDET",
-    featuresTitle: "Yksinkertainen rakenne, vahva toteutus",
-    featuresText: "AutoClient yhdistää prospektitietokannan, analytiikan, personoidut yhteydenotot ja jatkuvan operoinnin yhdeksi järjestelmäksi.",
-    f1Title: "Prospektitietokanta",
-    f1Text: "Rakentaa asiakasprofiiliinne perustuvan tietokannan yrityksistä ja päättäjistä.",
-    f2Title: "Ostosignaalihaku",
-    f2Text: "Päivittää dataa säännöllisesti ja auttaa löytämään ajankohtaiset prospektit.",
-    f3Title: "Datan rikastus",
-    f3Text: "Analysoi prospektin tilannetta, kipupisteitä ja prioriteettia ennen yhteydenottoa.",
-    f4Title: "Personoidut viestit",
-    f4Text: "Viestit kirjoitetaan teidän kontekstilla, teidän mallien ja strategian pohjalta.",
-    f5Title: "Jatkuva outbound",
-    f5Text: "Follow-upit, uudelleenkontaktointi ja useiden päättäjien lähestyminen kuuluvat prosessiin.",
-    f6Title: "Dashboard ja CRM",
-    f6Text: "Kaikki data, aktiviteetit ja suorituskyky näkyvät selkeästi yhdessä paikassa.",
-
-    useEyebrow: "MITÄ HYÖTYÄ TÄSTÄ ON",
-    useTitle: "Enemmän kontrollia, vähemmän sekavaa outboundia",
-    useText: "Järjestelmä hoitaa raskaat ja toistuvat vaiheet, jotta myynti voi keskittyä keskusteluihin, klousaamiseen ja prosessin optimointiin.",
-    whatWeHandleTitle: "Mitä AutoClient hoitaa",
-    wh1: "Prospektien etsintä ja tietokannan ylläpito",
-    wh2: "Ostosignaalien tunnistus",
-    wh3: "Datan rikastus ja analyysi",
-    wh4: "Personoitujen viestien valmistelu",
-    wh5: "Yhteydenotot, follow-upit ja vastausten hallinta",
-    wh6: "Dashboard ja integraatiot",
-    yourTeamTitle: "Mihin teidän tiimi keskittyy",
-    yt1: "Tarjouksen ja kohderyhmän suunta",
-    yt2: "Viestistrategian linjaukset",
-    yt3: "Myyntikeskustelut ja klousaus",
-    yt4: "Tulosten arviointi ja kehitys",
-    yt5: "Liiketoiminnan kasvun ohjaaminen",
-    calloutText: "AutoClient ei korvaa myyntitiimiä. Se rakentaa jatkuvan ja hallittavan outbound-järjestelmän myynnin alkuvaiheeseen.",
+    gallery2Title: "Yritykset ja kontaktit",
+    gallery2Text: "Kampanjat, yritykset ja kontaktit näkyvät samassa näkymässä.",
+    gallery3Title: "Analytiikka",
+    gallery3Text: "Visualisoinnit ja jakaumat auttavat optimoimaan toimintaa.",
 
     pricingEyebrow: "HINNOITTELU",
     pricingTitle: "Aloita pilotilla tai rakenna jatkuva toimintamalli",
-    pricingText: "Yhteistyö voidaan käynnistää kevyesti pilotilla, jonka jälkeen kokonaisuutta voidaan laajentaa yrityksenne tarpeiden mukaan.",
+    pricingText: "Kevyt aloitus, selkeä seuraava askel ja mahdollisuus skaalata myöhemmin.",
     planPilot: "Pilotti",
     planVat: " + alv",
     pilotSub: "Matala kynnys testata konsepti käytännössä",
     pilot1: "Prospekti-databasen rakentaminen",
     pilot2: "Vähintään 500 prospektin kontaktointi",
-    pilot3: "Follow-upit, vastausten hallinta ja buukkaus",
+    pilot3: "Follow-upit ja vastausten hallinta",
     pilot4: "Datan rikastus ja ostosignaalit",
     featuredBadge: "Suositeltu",
     planQuarter: " / 3 kk",
-    basicSub: "Tai 6000€ / vuosi + provisio",
+    basicSub: "Jatkuva järjestelmä ja suurempi volyymi",
     basic1: "Koko asiakasprofiilin kartoitus",
-    basic2: "Jopa 1000 päättäjään kontaktointi kuukaudessa",
+    basic2: "Jopa 1000 päättäjään kontaktointi / kk",
     basic3: "Ostosignaalihaku 2 viikon välein",
-    basic4: "Prospektitietokannan säännöllinen päivitys",
+    basic4: "Prospektidatan jatkuva päivitys",
     basic5: "CRM-integraatio",
-    basic6: "Vastaustenhallinta ja tapaamisten buukkaus",
+    basic6: "Tapaamisten buukkaus",
     planScale: "Laajennukset",
     customPlan: "Custom",
     customSub: "Skaalataan tarpeen mukaan",
     custom1: "Suurempi outbound-volyymi",
     custom2: "Useampi asiakassegmentti",
     custom3: "Useammin tapahtuva ostosignaalihaku",
-    custom4: "Inbound / outbound-infran ulkoistaminen",
-    custom5: "Domainit, inboxit ja Workspace-ylläpito",
-
-    processEyebrow: "KÄYTTÖÖNOTTO",
-    processTitle: "Järjestelmä käyntiin noin 10 päivässä",
-    processText: "Käyttöönotto on rakennettu nopeaksi: tiedot, kickoff, räätälöinti ja käynnistys selkeällä aikataululla.",
-    day1: "Päivä 2",
-    proc1Title: "Esitäytetty asiakas- ja ICP-lomake",
-    proc1Text: "Lähetämme lomakkeen valmiiksi pohjustettuna, ja te tarkastatte sen.",
-    day2: "Päivä 4",
-    proc2Title: "Aloitustapaaminen",
-    proc2Text: "Suunnitellaan yhteydenottostrategia, asiakassegmentit ja integraatiot.",
-    day3: "Päivä 6",
-    proc3Title: "Räätälöinti ja asiakasportaali",
-    proc3Text: "AutoClient mukautetaan teidän tarpeisiin ja pääsette dashboardiin.",
-    day4: "Päivä 9",
-    proc4Title: "Prospektointi käyntiin",
-    proc4Text: "Kaikki on valmista, prospektointi alkaa ja ensimmäiset viestit lähtevät pian.",
+    custom4: "Infra ja ylläpito",
+    custom5: "Lisäautomaatioita",
 
     ctaEyebrow: "SEURAAVA ASKEL",
-    ctaTitle: "Valitse AutoClient, jos haluat yhdistää laadukkaan toteutuksen ja skaalautuvan järjestelmän",
-    ctaText: "Katsotaan yhdessä, miten AutoClient sopii teidän myyntiprosessiin, asiakasprofiiliin ja kasvutavoitteisiin.",
+    ctaTitle: "Jos haluat ulos enemmän oikeita myyntikeskusteluja, tästä kannattaa aloittaa",
+    ctaText: "Katsotaan nopeasti sopiiko AutoClient teidän myyntimalliin, asiakasprofiiliin ja kasvutavoitteisiin.",
     ctaPrimary: "Ota yhteyttä",
     ctaSecondary: "Varaa keskustelu",
 
@@ -197,162 +151,108 @@ const translations = {
 
   en: {
     navProduct: "Product",
+    navHow: "How it works",
     navShowcase: "Dashboard",
-    navFeatures: "Features",
     navPricing: "Pricing",
-    navProcess: "Implementation",
     navContact: "Book a call",
 
     heroEyebrow: "AUTOCLIENT FOR EARLY-STAGE B2B SALES",
-    heroTitle: "Less manual work. More real sales conversations.",
-    heroText: "AutoClient builds a controlled outbound system for your team: prospects, buying signals, personalized outreach and a transparent dashboard in one system.",
+    heroTitle: "Sales without manual chaos.",
+    heroText: "AutoClient finds the right companies, detects buying signals and handles outreach so your sales team can focus on closing.",
     heroBtnPrimary: "Book a demo",
-    heroBtnSecondary: "View dashboard",
+    heroBtnSecondary: "See how it works",
+    miniStat1: "prospects found",
+    miniStat2: "leads contacted",
+    miniStat3: "time saved",
 
-    proof1Label: "Prospects",
-    proof1Text: "Up-to-date database",
-    proof2Label: "Contacted leads",
-    proof2Text: "Validated before send",
-    proof3Label: "Time saved",
-    proof3Text: "Manual work reduced",
-    scrollText: "Scroll down",
+    sliderLabel: "Why AutoClient",
+    slide1Title: "Right prospects",
+    slide1Text: "AutoClient finds the companies and decision-makers that match your target profile.",
+    slide2Title: "Buying signals",
+    slide2Text: "Detects companies that have a relevant need or buying readiness right now.",
+    slide3Title: "Automated outreach",
+    slide3Text: "Personalized messages and follow-ups move automatically.",
+    slide4Title: "Clear visibility",
+    slide4Text: "You see what is happening, what works and what happens next in one place.",
+    floatNoteLabel: "Stronger first impression",
+    floatNoteTitle: "Clear value proposition first",
 
-    dashboardLive: "Live",
-    metric1Label: "Prospects found",
-    metric1Text: "Up-to-date database",
-    metric2Label: "Leads contacted",
-    metric2Text: "Validated before sending",
-    metric3Label: "Meetings booked",
-    metric3Text: "High-intent leads",
-    metric4Label: "Time saved",
-    metric4Text: "Manual work reduced",
-
-    lead1Text: "Buying signal: hiring + expansion",
-    lead2Text: "Decision-maker identified",
-    lead3Text: "Campaign-ready contact set",
-    chartTitle: "Campaign performance",
-    chartRange: "Last 30 days",
-    bar1Label: "Open rate",
-    bar2Label: "Reply rate",
-    bar3Label: "Meeting conversion",
-    float1Title: "Pipeline visible",
-    float1Value: "Clear dashboard",
-    float2Title: "Process running",
-    float2Value: "Systematically",
-
-    strip1: "Built for modern B2B teams",
-    strip2: "Buying signals and prospecting",
+    strip1: "Prospect database",
+    strip2: "Buying signals",
     strip3: "Personalized outbound",
-    strip4: "Transparent analytics",
-    strip5: "CRM-ready operating model",
+    strip4: "Follow-up automation",
+    strip5: "Transparent dashboard",
+    strip6: "CRM-ready",
 
-    productEyebrow: "WHAT AUTOCLIENT DOES",
-    productTitle: "A systematic solution for early-stage sales execution",
-    productText: "AutoClient removes repetitive manual work from early-stage sales and builds a process that generates conversations more consistently.",
+    productEyebrow: "CORE BENEFITS",
+    productTitle: "Why AutoClient works in practice",
+    productText: "In short: less manual work, more timely leads and a clearer process.",
     productCard1Title: "Less manual work",
-    productCard1Text: "Prospecting, enrichment and outbound routines no longer depend on heavy manual work.",
+    productCard1Text: "Prospecting, enrichment and outreach no longer rely on heavy manual effort.",
     productCard2Title: "More timely leads",
-    productCard2Text: "Buying signals help identify who should be contacted right now.",
+    productCard2Text: "Buying signals bring forward the companies worth contacting right now.",
     productCard3Title: "Better visibility",
-    productCard3Text: "Dashboard and integrations make the process transparent and easy to follow.",
+    productCard3Text: "All data, campaigns and results are visible in one environment.",
+
+    howEyebrow: "HOW IT WORKS",
+    howTitle: "A simple flow from search to meetings",
+    howText: "AutoClient is built around a few clear steps that make outbound more systematic.",
+    flow1Title: "Prospects",
+    flow1Text: "Build the right company and contact database for your ICP.",
+    flow2Title: "Signals",
+    flow2Text: "Identify companies with a relevant situation or need right now.",
+    flow3Title: "Outreach",
+    flow3Text: "Messages, follow-ups and contacts progress in a structured way.",
+    flow4Title: "Meetings",
+    flow4Text: "Sales can focus on conversations and closing.",
 
     showcaseEyebrow: "DASHBOARD",
-    showcaseTitle: "AutoClient in practice",
-    showcaseText: "The client portal brings campaigns, companies, contacts, deep analysis and visual insights into one environment.",
+    showcaseTitle: "When you want depth, the dashboard shows everything",
+    showcaseText: "We do not overload the first screen with dashboard visuals, but further down it works as strong proof of product depth and transparency.",
     showcaseBox1Label: "Clear interface",
-    showcaseBox1Title: "A dashboard that makes the process transparent",
-    showcaseBox1Text: "You see what is happening, what has been done, who is next and how campaigns are actually performing.",
-    showcaseBox2Label: "Better decision-making",
-    showcaseBox2Title: "Data helps optimize strategy",
-    showcaseBox2Text: "Company status, contacts, reply rates and visual insights make improvement areas visible quickly.",
+    showcaseBox1Title: "See immediately what is happening",
+    showcaseBox1Text: "Campaigns, discovered companies, contacts and operational status stay in one place.",
+    showcaseBox2Label: "Better decisions",
+    showcaseBox2Title: "Data helps improve the process",
+    showcaseBox2Text: "Replies, reply rate, analysis and visuals quickly show what is working.",
     gallery1Title: "Login and interface",
-    gallery1Text: "A clear and modern portal that makes the whole system feel manageable immediately.",
-    gallery2Title: "Companies, contacts and deep analysis",
-    gallery2Text: "Campaigns, discovered companies, contacts and company-specific analysis in one view.",
-    gallery3Title: "Analytics and visualizations",
-    gallery3Text: "Industry splits, regional map and other insights help optimize the process.",
-
-    featuresEyebrow: "FEATURES",
-    featuresTitle: "Simple structure, strong execution",
-    featuresText: "AutoClient combines a prospect database, analytics, personalized outreach and continuous execution into one system.",
-    f1Title: "Prospect database",
-    f1Text: "Builds an ICP-based database of companies and decision-makers.",
-    f2Title: "Buying signal search",
-    f2Text: "Keeps data fresh and helps identify timely prospects.",
-    f3Title: "Data enrichment",
-    f3Text: "Analyzes prospect context, pain points and priority before outreach.",
-    f4Title: "Personalized messaging",
-    f4Text: "Messages are written using your context, templates and strategy.",
-    f5Title: "Continuous outbound",
-    f5Text: "Follow-ups, re-contacting and reaching multiple decision-makers are part of the process.",
-    f6Title: "Dashboard and CRM",
-    f6Text: "All data, activity and performance are visible in one place.",
-
-    useEyebrow: "WHAT THIS CHANGES",
-    useTitle: "More control, less chaotic outbound",
-    useText: "The system handles the heavy repetitive stages so sales can focus on conversations, closing and optimization.",
-    whatWeHandleTitle: "What AutoClient handles",
-    wh1: "Prospect sourcing and database maintenance",
-    wh2: "Buying signal detection",
-    wh3: "Data enrichment and analysis",
-    wh4: "Preparation of personalized messages",
-    wh5: "Outreach, follow-ups and reply handling",
-    wh6: "Dashboard and integrations",
-    yourTeamTitle: "What your team focuses on",
-    yt1: "Offer direction and target audience",
-    yt2: "Messaging and strategic decisions",
-    yt3: "Sales calls and closing",
-    yt4: "Reviewing and improving results",
-    yt5: "Driving business growth",
-    calloutText: "AutoClient does not replace your sales team. It builds a continuous and controlled outbound system for early-stage sales.",
+    gallery1Text: "A clear and modern portal where the whole system feels manageable instantly.",
+    gallery2Title: "Companies and contacts",
+    gallery2Text: "Campaigns, companies and contacts appear in one view.",
+    gallery3Title: "Analytics",
+    gallery3Text: "Visual insights and distributions help optimize execution.",
 
     pricingEyebrow: "PRICING",
     pricingTitle: "Start with a pilot or build a continuous operating model",
-    pricingText: "Engagement can begin with a light pilot and then scale based on your company’s needs.",
+    pricingText: "Light start, clear next step and room to scale later.",
     planPilot: "Pilot",
     planVat: " + VAT",
-    pilotSub: "A low-risk way to test the concept in practice",
+    pilotSub: "A low-risk way to test the concept",
     pilot1: "Build the prospect database",
     pilot2: "Contact at least 500 prospects",
-    pilot3: "Follow-ups, reply handling and meeting booking",
+    pilot3: "Follow-ups and reply handling",
     pilot4: "Data enrichment and buying signals",
     featuredBadge: "Recommended",
     planQuarter: " / 3 months",
-    basicSub: "Or €6000 / year + performance fee",
+    basicSub: "Continuous system and higher volume",
     basic1: "Full ICP mapping",
-    basic2: "Up to 1000 decision-makers contacted per month",
+    basic2: "Up to 1000 decision-makers contacted / month",
     basic3: "Buying signal search every 2 weeks",
-    basic4: "Regular prospect database updates",
+    basic4: "Continuous prospect data updates",
     basic5: "CRM integration",
-    basic6: "Reply handling and meeting booking",
+    basic6: "Meeting booking",
     planScale: "Extensions",
     customPlan: "Custom",
     customSub: "Scaled to your needs",
     custom1: "Higher outbound volume",
-    custom2: "Multiple customer segments",
+    custom2: "More customer segments",
     custom3: "More frequent buying signal search",
-    custom4: "Outbound infrastructure outsourcing",
-    custom5: "Domains, inboxes and Workspace maintenance",
-
-    processEyebrow: "IMPLEMENTATION",
-    processTitle: "System live in around 10 days",
-    processText: "Implementation is designed to be fast: input, kickoff, customization and launch in a clear sequence.",
-    day1: "Day 2",
-    proc1Title: "Pre-filled business and ICP form",
-    proc1Text: "We send a prepared form and you review it.",
-    day2: "Day 4",
-    proc2Title: "Kickoff session",
-    proc2Text: "We define outreach strategy, customer segments and integrations.",
-    day3: "Day 6",
-    proc3Title: "Customization and client portal",
-    proc3Text: "AutoClient is tailored to your needs and dashboard access is opened.",
-    day4: "Day 9",
-    proc4Title: "Prospecting starts",
-    proc4Text: "Everything is ready, prospecting begins and first messages go out shortly after.",
+    custom4: "Infrastructure and maintenance",
+    custom5: "Additional automations",
 
     ctaEyebrow: "NEXT STEP",
-    ctaTitle: "Choose AutoClient if you want to combine strong execution with scalable control",
-    ctaText: "Let’s look at how AutoClient fits your sales process, ICP and growth goals.",
+    ctaTitle: "If you want more real sales conversations out of outbound, start here",
+    ctaText: "Let’s quickly see whether AutoClient fits your sales model, ICP and growth goals.",
     ctaPrimary: "Contact us",
     ctaSecondary: "Book a call",
 
@@ -421,7 +321,6 @@ const countObserver = new IntersectionObserver(
         const eased = 1 - Math.pow(1 - progress, 3);
         const value = Math.round(target * eased);
         el.textContent = `${formatCount(value)}${suffix}`;
-
         if (progress < 1) requestAnimationFrame(update);
       }
 
@@ -435,11 +334,8 @@ const countObserver = new IntersectionObserver(
 countElements.forEach((el) => countObserver.observe(el));
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 10) {
-    header?.classList.add("scrolled");
-  } else {
-    header?.classList.remove("scrolled");
-  }
+  if (window.scrollY > 10) header?.classList.add("scrolled");
+  else header?.classList.remove("scrolled");
 });
 
 const sections = [...document.querySelectorAll("main section[id]")];
@@ -451,7 +347,6 @@ window.addEventListener("scroll", () => {
     const top = section.offsetTop;
     const bottom = top + section.offsetHeight;
     const relatedLink = document.querySelector(`.nav-links a[href="#${id}"]`);
-
     if (!relatedLink) return;
     relatedLink.classList.toggle("active", scrollPos >= top && scrollPos < bottom);
   });
@@ -464,33 +359,6 @@ if (cursorGlow) {
   });
 }
 
-if (heroDashboard) {
-  window.addEventListener("mousemove", (e) => {
-    const rect = heroDashboard.getBoundingClientRect();
-    const within =
-      e.clientX >= rect.left &&
-      e.clientX <= rect.right &&
-      e.clientY >= rect.top &&
-      e.clientY <= rect.bottom;
-
-    if (!within) {
-      heroDashboard.style.transform = "rotateX(0deg) rotateY(0deg)";
-      return;
-    }
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const px = (x / rect.width - 0.5) * 2;
-    const py = (y / rect.height - 0.5) * 2;
-
-    heroDashboard.style.transform = `rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 7).toFixed(2)}deg)`;
-  });
-
-  heroDashboard.addEventListener("mouseleave", () => {
-    heroDashboard.style.transform = "rotateX(0deg) rotateY(0deg)";
-  });
-}
-
 document.querySelectorAll(".tilt-card").forEach((card) => {
   card.addEventListener("mousemove", (e) => {
     const rect = card.getBoundingClientRect();
@@ -498,7 +366,6 @@ document.querySelectorAll(".tilt-card").forEach((card) => {
     const y = e.clientY - rect.top;
     const px = (x / rect.width - 0.5) * 2;
     const py = (y / rect.height - 0.5) * 2;
-
     card.style.transform = `rotateX(${(-py * 3).toFixed(2)}deg) rotateY(${(px * 4).toFixed(2)}deg) translateY(-4px)`;
   });
 
@@ -519,6 +386,60 @@ document.querySelectorAll(".magnetic-btn").forEach((btn) => {
     btn.style.transform = "";
   });
 });
+
+function showSlide(index) {
+  infoCards.forEach((card, i) => {
+    card.classList.toggle("active", i === index);
+  });
+
+  sliderDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+
+  currentSlide = index;
+}
+
+function nextSlide() {
+  const next = (currentSlide + 1) % infoCards.length;
+  showSlide(next);
+}
+
+function prevSlide() {
+  const prev = (currentSlide - 1 + infoCards.length) % infoCards.length;
+  showSlide(prev);
+}
+
+function startAutoSlide() {
+  stopAutoSlide();
+  autoSlideInterval = setInterval(nextSlide, 4200);
+}
+
+function stopAutoSlide() {
+  if (autoSlideInterval) clearInterval(autoSlideInterval);
+}
+
+nextCardBtn?.addEventListener("click", () => {
+  nextSlide();
+  startAutoSlide();
+});
+
+prevCardBtn?.addEventListener("click", () => {
+  prevSlide();
+  startAutoSlide();
+});
+
+sliderDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    showSlide(index);
+    startAutoSlide();
+  });
+});
+
+cardSlider?.addEventListener("mouseenter", stopAutoSlide);
+cardSlider?.addEventListener("mouseleave", startAutoSlide);
+
+showSlide(0);
+startAutoSlide();
 
 galleryButtons.forEach((button) => {
   button.addEventListener("click", () => {
