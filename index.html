@@ -19,16 +19,15 @@
 </head>
 <body>
   <div class="bg-grid"></div>
-  <div class="bg-glow bg-glow-purple"></div>
-  <div class="bg-glow bg-glow-blue"></div>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
 
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="brand">
         <img src="assets/logo.webp" alt="Scalera Solutions logo" class="brand-logo" />
-        <div class="brand-text">
-          <span class="brand-name">Scalera Solutions</span>
-        </div>
+        <span class="brand-name">Scalera Solutions</span>
       </a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Avaa valikko">
@@ -38,6 +37,7 @@
 
       <nav class="nav-links" id="navLinks">
         <a href="#product" data-i18n="navProduct">Tuote</a>
+        <a href="#showcase" data-i18n="navShowcase">Dashboard</a>
         <a href="#features" data-i18n="navFeatures">Ominaisuudet</a>
         <a href="#pricing" data-i18n="navPricing">Hinnoittelu</a>
         <a href="#process" data-i18n="navProcess">Käyttöönotto</a>
@@ -54,151 +54,129 @@
 
   <main>
     <section class="hero section">
-      <div class="container hero-grid">
+      <div class="container hero-layout">
         <div class="hero-copy">
-          <div class="eyebrow" data-i18n="heroEyebrow">AI-JÄRJESTELMÄ B2B-MYYNNIN ALKUVAIHEESEEN</div>
+          <div class="eyebrow" data-i18n="heroEyebrow">AUTOCLIENT B2B-MYYNNIN ALKUVAIHEESEEN</div>
           <h1 data-i18n="heroTitle">
-            Vähemmän manuaalista työtä, enemmän laadukkaita myyntikeskusteluja.
+            Vähemmän manuaalista työtä.
+            Enemmän oikeita myyntikeskusteluja.
           </h1>
           <p class="hero-text" data-i18n="heroText">
-            AutoClient auttaa rakentamaan systemaattisen outbound-prosessin:
+            AutoClient rakentaa systemaattisen outbound-prosessin:
             prospektitietokanta, ostosignaalit, personoidut yhteydenotot,
-            vastausten hallinta ja läpinäkyvä dashboard samassa kokonaisuudessa.
+            vastausten hallinta ja läpinäkyvä dashboard yhdessä kokonaisuudessa.
           </p>
 
           <div class="hero-actions">
             <a href="#contact" class="btn btn-primary" data-i18n="heroBtnPrimary">Varaa demo</a>
-            <a href="#pricing" class="btn btn-secondary" data-i18n="heroBtnSecondary">Katso hinnoittelu</a>
+            <a href="#showcase" class="btn btn-secondary" data-i18n="heroBtnSecondary">Katso dashboard</a>
           </div>
 
-          <div class="hero-meta">
-            <div class="meta-card">
-              <strong data-i18n="meta1Title">Prospektitietokanta</strong>
-              <span data-i18n="meta1Text">Kattaa asiakasprofiiliin sopivat yritykset ja päättäjät</span>
-            </div>
-            <div class="meta-card">
-              <strong data-i18n="meta2Title">Personoitu outbound</strong>
-              <span data-i18n="meta2Text">Yhteydenotot tehdään teidän strategian ja kontekstin pohjalta</span>
-            </div>
-            <div class="meta-card">
-              <strong data-i18n="meta3Title">Täysi näkyvyys</strong>
-              <span data-i18n="meta3Text">Dashboard ja CRM-integraatio pitävät prosessin läpinäkyvänä</span>
-            </div>
+          <div class="hero-badges">
+            <span data-i18n="heroBadge1">Prospektitietokanta</span>
+            <span data-i18n="heroBadge2">Ostosignaalit</span>
+            <span data-i18n="heroBadge3">Personoitu outbound</span>
+            <span data-i18n="heroBadge4">CRM-integraatio</span>
           </div>
         </div>
 
-        <div class="hero-dashboard card">
-          <div class="dashboard-top">
-            <div class="dashboard-title-wrap">
-              <div class="dot-group">
+        <div class="hero-visual">
+          <div class="hero-dashboard card dashboard-card-main">
+            <div class="window-top">
+              <div class="window-dots">
                 <span></span><span></span><span></span>
               </div>
-              <div>
-                <p class="dashboard-label">AutoClient Dashboard</p>
-                <h3 data-i18n="dashboardTitle">Live-näkymä pipelineen</h3>
+              <div class="window-title">AutoClient Dashboard</div>
+              <div class="live-pill" data-i18n="dashboardLive">Live</div>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="metric-box">
+                <span data-i18n="metric1Label">Prospektit löydetty</span>
+                <strong>2,184</strong>
+                <small data-i18n="metric1Text">Ajantasainen tietokanta</small>
+              </div>
+              <div class="metric-box">
+                <span data-i18n="metric2Label">Liidejä kontaktoitu</span>
+                <strong>1,024</strong>
+                <small data-i18n="metric2Text">Validoitu ennen lähetystä</small>
+              </div>
+              <div class="metric-box">
+                <span data-i18n="metric3Label">Tapaamisia buukattu</span>
+                <strong>26</strong>
+                <small data-i18n="metric3Text">Korkean intentin liidejä</small>
+              </div>
+              <div class="metric-box">
+                <span data-i18n="metric4Label">Aikaa säästetty</span>
+                <strong>74h</strong>
+                <small data-i18n="metric4Text">Manuaalinen työ vähenee</small>
               </div>
             </div>
-            <span class="status-badge" data-i18n="dashboardLive">Live</span>
-          </div>
 
-          <div class="dashboard-metrics">
-            <div class="metric">
-              <span class="metric-label" data-i18n="metric1Label">Prospektit löydetty</span>
-              <strong>2,184</strong>
-              <small data-i18n="metric1Text">+18% tässä kuussa</small>
-            </div>
-            <div class="metric">
-              <span class="metric-label" data-i18n="metric2Label">Liidejä kontaktoitu</span>
-              <strong>1,024</strong>
-              <small data-i18n="metric2Text">Tarkistettu ennen lähetystä</small>
-            </div>
-            <div class="metric">
-              <span class="metric-label" data-i18n="metric3Label">Tapaamisia buukattu</span>
-              <strong>26</strong>
-              <small data-i18n="metric3Text">Korkean intentin liidejä</small>
-            </div>
-            <div class="metric">
-              <span class="metric-label" data-i18n="metric4Label">Aikaa säästetty</span>
-              <strong>74h</strong>
-              <small data-i18n="metric4Text">Manuaalista työtä poistettu</small>
-            </div>
-          </div>
-
-          <div class="dashboard-panels">
-            <div class="dashboard-panel">
-              <div class="panel-head">
-                <span data-i18n="panelLeadQuality">Liidien laatu</span>
-                <span data-i18n="panelScore">Pisteet</span>
-              </div>
-
-              <div class="lead-row">
+            <div class="dashboard-list">
+              <div class="list-row">
                 <div>
                   <strong>Nordic Advisory Group</strong>
                   <p data-i18n="lead1Text">Ostosignaali: rekrytointi + laajentuminen</p>
                 </div>
-                <span class="pill pill-blue">92</span>
+                <span class="score-pill blue">92</span>
               </div>
-
-              <div class="lead-row">
+              <div class="list-row">
                 <div>
                   <strong>FinCore Partners</strong>
                   <p data-i18n="lead2Text">Päättäjä tunnistettu</p>
                 </div>
-                <span class="pill pill-purple">88</span>
+                <span class="score-pill purple">88</span>
               </div>
-
-              <div class="lead-row">
+              <div class="list-row">
                 <div>
                   <strong>Axion Systems</strong>
                   <p data-i18n="lead3Text">Kampanjavalmis kontaktijoukko</p>
                 </div>
-                <span class="pill">81</span>
+                <span class="score-pill">81</span>
               </div>
             </div>
 
-            <div class="dashboard-panel">
-              <div class="panel-head">
-                <span data-i18n="panelCampaignPerformance">Kampanjan suorituskyky</span>
-                <span data-i18n="panelLast30">Viimeiset 30 pv</span>
+            <div class="mini-chart">
+              <div class="mini-chart-top">
+                <span data-i18n="chartTitle">Kampanjan suorituskyky</span>
+                <span data-i18n="chartRange">Viimeiset 30 pv</span>
               </div>
 
-              <div class="bar-list">
-                <div class="bar-item">
-                  <div class="bar-info">
-                    <span data-i18n="bar1Label">Sähköpostin avausaste</span>
-                    <strong>54%</strong>
-                  </div>
-                  <div class="bar-track">
-                    <div class="bar-fill bar-fill-blue" style="width: 54%"></div>
-                  </div>
+              <div class="chart-row">
+                <div class="chart-label-wrap">
+                  <span data-i18n="bar1Label">Avausaste</span>
+                  <strong>54%</strong>
                 </div>
-
-                <div class="bar-item">
-                  <div class="bar-info">
-                    <span data-i18n="bar2Label">Vastausaste</span>
-                    <strong>17%</strong>
-                  </div>
-                  <div class="bar-track">
-                    <div class="bar-fill bar-fill-purple" style="width: 17%"></div>
-                  </div>
-                </div>
-
-                <div class="bar-item">
-                  <div class="bar-info">
-                    <span data-i18n="bar3Label">Tapaamiskonversio</span>
-                    <strong>8%</strong>
-                  </div>
-                  <div class="bar-track">
-                    <div class="bar-fill" style="width: 8%"></div>
-                  </div>
-                </div>
+                <div class="chart-track"><div class="chart-fill blue-fill" style="width:54%"></div></div>
               </div>
 
-              <div class="mini-note" data-i18n="dashboardNote">
-                Viestit pysyvät teidän strategian mukaisina. Toteutus muuttuu
-                nopeammaksi, systemaattisemmaksi ja mitattavaksi.
+              <div class="chart-row">
+                <div class="chart-label-wrap">
+                  <span data-i18n="bar2Label">Vastausaste</span>
+                  <strong>17%</strong>
+                </div>
+                <div class="chart-track"><div class="chart-fill purple-fill" style="width:17%"></div></div>
+              </div>
+
+              <div class="chart-row">
+                <div class="chart-label-wrap">
+                  <span data-i18n="bar3Label">Tapaamiskonversio</span>
+                  <strong>8%</strong>
+                </div>
+                <div class="chart-track"><div class="chart-fill" style="width:8%"></div></div>
               </div>
             </div>
+          </div>
+
+          <div class="floating-card floating-card-1 card">
+            <span data-i18n="float1Title">Pipeline näkyvissä</span>
+            <strong data-i18n="float1Value">Selkeä dashboard</strong>
+          </div>
+
+          <div class="floating-card floating-card-2 card">
+            <span data-i18n="float2Title">Prosessi rullaa</span>
+            <strong data-i18n="float2Value">Systemaattisesti</strong>
           </div>
         </div>
       </div>
@@ -220,23 +198,21 @@
           <div class="eyebrow" data-i18n="productEyebrow">MITÄ AUTOCLIENT TEKEE</div>
           <h2 data-i18n="productTitle">Systemaattinen ratkaisu myyntiprosessin alkuvaiheeseen</h2>
           <p data-i18n="productText">
-            AutoClient rakentaa ja ylläpitää prospektidataa, tunnistaa
-            ostosignaaleja, valmistelee yhteydenottoja ja tukee liidien
-            käsittelyä, jotta myyntitiimi voi käyttää enemmän aikaa oikeisiin
-            keskusteluihin.
+            AutoClient auttaa poistamaan myynnin alkuvaiheen toistuvaa käsityötä
+            ja rakentaa prosessin, joka tuottaa tasaisemmin uusia keskusteluja.
           </p>
         </div>
 
-        <div class="grid-3">
-          <article class="card simple-card">
+        <div class="benefit-grid">
+          <article class="card benefit-card">
             <h3 data-i18n="productCard1Title">Vähemmän käsityötä</h3>
             <p data-i18n="productCard1Text">
-              Prospektointi, datan rikastus ja outboundin rutiinit eivät jää enää
-              myyjien manuaalisen työn varaan.
+              Prospektointi, rikastus ja outboundin rutiinit eivät jää enää
+              manuaalisen työn varaan.
             </p>
           </article>
 
-          <article class="card simple-card">
+          <article class="card benefit-card">
             <h3 data-i18n="productCard2Title">Ajankohtaisemmat liidit</h3>
             <p data-i18n="productCard2Text">
               Ostosignaalit auttavat tunnistamaan, keihin kannattaa olla
@@ -244,26 +220,98 @@
             </p>
           </article>
 
-          <article class="card simple-card">
+          <article class="card benefit-card">
             <h3 data-i18n="productCard3Title">Parempi näkyvyys</h3>
             <p data-i18n="productCard3Text">
-              Dashboard ja integraatiot tuovat prosessin, aktiviteetit ja datan
-              selkeästi näkyville.
+              Dashboard ja integraatiot tekevät prosessista läpinäkyvän ja helposti seurattavan.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt-section" id="features">
+    <section class="section alt-section" id="showcase">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="showcaseEyebrow">DASHBOARD PREVIEW</div>
+          <h2 data-i18n="showcaseTitle">Näe AutoClient käytännössä</h2>
+          <p data-i18n="showcaseText">
+            Dashboard näyttää kampanjat, löydetyt yritykset, kontaktit, analytiikan
+            ja visualisoinnit selkeästi yhdestä paikasta.
+          </p>
+        </div>
+
+        <div class="showcase-layout">
+          <div class="card video-card">
+            <div class="media-head">
+              <span data-i18n="videoLabel">Esittelyvideo</span>
+            </div>
+            <video class="showcase-video" controls playsinline preload="metadata">
+              <source src="assets/demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <div class="showcase-side">
+            <div class="card side-note-card">
+              <h3 data-i18n="sideNoteTitle">AutoClient-asiakasportaali</h3>
+              <p data-i18n="sideNoteText">
+                Hallitse kampanjoita, seuraa prospektidataa ja tee päätöksiä
+                selkeän analytiikan pohjalta.
+              </p>
+            </div>
+
+            <div class="card stat-quote-card">
+              <span data-i18n="sideMiniLabel">Miksi tämä toimii</span>
+              <p data-i18n="sideMiniText">
+                Ajantasainen data, jatkuva prosessi ja personoitu kontaktointi
+                muodostavat järjestelmän, joka rakentaa pipelinea tasaisemmin.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="card gallery-card">
+            <img src="assets/dashboard-login.webp" alt="AutoClient kirjautumisnäkymä" class="gallery-image" />
+            <div class="gallery-copy">
+              <h3 data-i18n="gallery1Title">Kirjautuminen ja käyttöliittymä</h3>
+              <p data-i18n="gallery1Text">
+                Selkeä aloitusnäkymä, josta asiakasportaaliin pääsee nopeasti.
+              </p>
+            </div>
+          </article>
+
+          <article class="card gallery-card">
+            <img src="assets/dashboard-table.webp" alt="AutoClient yritys- ja kontaktinäkymä" class="gallery-image" />
+            <div class="gallery-copy">
+              <h3 data-i18n="gallery2Title">Yritykset, kontaktit ja syväanalyysi</h3>
+              <p data-i18n="gallery2Text">
+                Kampanjat, löydetyt yritykset, kontaktit ja yrityskohtainen analyysi samassa näkymässä.
+              </p>
+            </div>
+          </article>
+
+          <article class="card gallery-card">
+            <img src="assets/dashboard-analytics.webp" alt="AutoClient analytiikkanäkymä" class="gallery-image" />
+            <div class="gallery-copy">
+              <h3 data-i18n="gallery3Title">Analytiikka ja visualisoinnit</h3>
+              <p data-i18n="gallery3Text">
+                Toimialajakaumat, aluekartta ja muu data auttavat optimoinnissa.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
       <div class="container">
         <div class="section-heading">
           <div class="eyebrow" data-i18n="featuresEyebrow">OMINAISUUDET</div>
           <h2 data-i18n="featuresTitle">Yksinkertainen rakenne, vahva toteutus</h2>
           <p data-i18n="featuresText">
-            AutoClient yhdistää prospektitietokannan, analytiikan,
-            personoidut yhteydenotot ja jatkuvan operoinnin yhdeksi
-            järjestelmäksi.
+            AutoClient yhdistää prospektitietokannan, analytiikan, personoidut
+            yhteydenotot ja jatkuvan operoinnin yhdeksi järjestelmäksi.
           </p>
         </div>
 
@@ -271,67 +319,56 @@
           <article class="card feature-card">
             <span class="feature-number">01</span>
             <h3 data-i18n="f1Title">Prospektitietokanta</h3>
-            <p data-i18n="f1Text">
-              Rakentaa asiakasprofiiliinne perustuvan tietokannan yrityksistä ja päättäjistä.
-            </p>
+            <p data-i18n="f1Text">Rakentaa asiakasprofiiliinne perustuvan tietokannan yrityksistä ja päättäjistä.</p>
           </article>
 
           <article class="card feature-card">
             <span class="feature-number">02</span>
             <h3 data-i18n="f2Title">Ostosignaalihaku</h3>
-            <p data-i18n="f2Text">
-              Päivittää dataa säännöllisesti ja auttaa löytämään ajankohtaiset prospektit.
-            </p>
+            <p data-i18n="f2Text">Päivittää dataa säännöllisesti ja auttaa löytämään ajankohtaiset prospektit.</p>
           </article>
 
           <article class="card feature-card">
             <span class="feature-number">03</span>
             <h3 data-i18n="f3Title">Datan rikastus</h3>
-            <p data-i18n="f3Text">
-              Analysoi prospektin tilannetta, kipupisteitä ja prioriteettia ennen yhteydenottoa.
-            </p>
+            <p data-i18n="f3Text">Analysoi prospektin tilannetta, kipupisteitä ja prioriteettia ennen yhteydenottoa.</p>
           </article>
 
           <article class="card feature-card">
             <span class="feature-number">04</span>
             <h3 data-i18n="f4Title">Personoidut viestit</h3>
-            <p data-i18n="f4Text">
-              Viestit kirjoitetaan teidän kontekstilla, teidän mallien ja strategian pohjalta.
-            </p>
+            <p data-i18n="f4Text">Viestit kirjoitetaan teidän kontekstilla, teidän mallien ja strategian pohjalta.</p>
           </article>
 
           <article class="card feature-card">
             <span class="feature-number">05</span>
             <h3 data-i18n="f5Title">Jatkuva outbound</h3>
-            <p data-i18n="f5Text">
-              Follow-upit, uudelleenkontaktointi ja useiden päättäjien lähestyminen kuuluvat prosessiin.
-            </p>
+            <p data-i18n="f5Text">Follow-upit, uudelleenkontaktointi ja useiden päättäjien lähestyminen kuuluvat prosessiin.</p>
           </article>
 
           <article class="card feature-card">
             <span class="feature-number">06</span>
             <h3 data-i18n="f6Title">Dashboard ja CRM</h3>
-            <p data-i18n="f6Text">
-              Kaikki data, aktiviteetit ja suorituskyky näkyvät selkeästi yhdessä paikassa.
-            </p>
+            <p data-i18n="f6Text">Kaikki data, aktiviteetit ja suorituskyky näkyvät selkeästi yhdessä paikassa.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container split-section">
-        <div class="section-heading">
-          <div class="eyebrow" data-i18n="useEyebrow">MITÄ HYÖTYÄ TÄSTÄ ON</div>
-          <h2 data-i18n="useTitle">Enemmän kontrollia, vähemmän sekavaa outboundia</h2>
-          <p data-i18n="useText">
-            Ajatus on yksinkertainen: järjestelmä hoitaa raskaat ja toistuvat
-            vaiheet, jotta myynti voi keskittyä keskusteluihin, klousaamiseen ja
-            prosessin optimointiin.
-          </p>
+    <section class="section alt-section">
+      <div class="container split-wrap">
+        <div class="split-left">
+          <div class="section-heading">
+            <div class="eyebrow" data-i18n="useEyebrow">MITÄ HYÖTYÄ TÄSTÄ ON</div>
+            <h2 data-i18n="useTitle">Enemmän kontrollia, vähemmän sekavaa outboundia</h2>
+            <p data-i18n="useText">
+              Järjestelmä hoitaa raskaat ja toistuvat vaiheet, jotta myynti voi
+              keskittyä keskusteluihin, klousaamiseen ja prosessin optimointiin.
+            </p>
+          </div>
         </div>
 
-        <div class="grid-2">
+        <div class="split-grid">
           <div class="card simple-card">
             <h3 data-i18n="whatWeHandleTitle">Mitä AutoClient hoitaa</h3>
             <ul class="check-list">
@@ -356,45 +393,8 @@
           </div>
         </div>
 
-        <div class="callout" data-i18n="calloutText">
-          AutoClient ei korvaa myyntitiimiä. Se rakentaa jatkuvan ja hallittavan
-          outbound-järjestelmän myynnin alkuvaiheeseen.
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt-section">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow" data-i18n="successEyebrow">MIKSI TÄMÄ TOIMII</div>
-          <h2 data-i18n="successTitle">Ajantasainen data + jatkuva prosessi + personointi</h2>
-          <p data-i18n="successText">
-            Kun oikeat prospektit tunnistetaan, heihin ollaan yhteydessä oikeaan
-            aikaan ja prosessi rullaa jatkuvasti, pipeline rakentuu tasaisemmin.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card simple-card">
-            <h3 data-i18n="successCard1Title">Ajantasainen prospektidata</h3>
-            <p data-i18n="successCard1Text">
-              Tiedätte ketkä kuuluvat kohderyhmäänne juuri nyt ja ketkä ovat ajankohtaisia.
-            </p>
-          </div>
-
-          <div class="card simple-card">
-            <h3 data-i18n="successCard2Title">Säännöllinen kontaktointi</h3>
-            <p data-i18n="successCard2Text">
-              Prospektit eivät jää yhden viestin varaan, vaan prosessi jatkuu suunnitelmallisesti.
-            </p>
-          </div>
-
-          <div class="card simple-card">
-            <h3 data-i18n="successCard3Title">Selkeä näkyvyys</h3>
-            <p data-i18n="successCard3Text">
-              Data ja aktiviteetit näkyvät dashboardilla, mikä auttaa strategian optimoinnissa.
-            </p>
-          </div>
+        <div class="callout big-callout" data-i18n="calloutText">
+          AutoClient ei korvaa myyntitiimiä. Se rakentaa jatkuvan ja hallittavan outbound-järjestelmän myynnin alkuvaiheeseen.
         </div>
       </div>
     </section>
@@ -460,42 +460,33 @@
           <div class="eyebrow" data-i18n="processEyebrow">KÄYTTÖÖNOTTO</div>
           <h2 data-i18n="processTitle">Järjestelmä käyntiin noin 10 päivässä</h2>
           <p data-i18n="processText">
-            Käyttöönotto on rakennettu nopeaksi: tiedot, kickoff, räätälöinti ja
-            käynnistys selkeällä aikataululla.
+            Käyttöönotto on rakennettu nopeaksi: tiedot, kickoff, räätälöinti ja käynnistys selkeällä aikataululla.
           </p>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-item card">
+        <div class="process-grid">
+          <div class="card process-card">
             <span class="timeline-step" data-i18n="day1">Päivä 2</span>
             <h3 data-i18n="proc1Title">Esitäytetty asiakas- ja ICP-lomake</h3>
-            <p data-i18n="proc1Text">
-              Lähetämme lomakkeen valmiiksi pohjustettuna, ja te tarkastatte sen.
-            </p>
+            <p data-i18n="proc1Text">Lähetämme lomakkeen valmiiksi pohjustettuna, ja te tarkastatte sen.</p>
           </div>
 
-          <div class="timeline-item card">
+          <div class="card process-card">
             <span class="timeline-step" data-i18n="day2">Päivä 4</span>
             <h3 data-i18n="proc2Title">Aloitustapaaminen</h3>
-            <p data-i18n="proc2Text">
-              Suunnitellaan yhteydenottostrategia, asiakassegmentit ja integraatiot.
-            </p>
+            <p data-i18n="proc2Text">Suunnitellaan yhteydenottostrategia, asiakassegmentit ja integraatiot.</p>
           </div>
 
-          <div class="timeline-item card">
+          <div class="card process-card">
             <span class="timeline-step" data-i18n="day3">Päivä 6</span>
             <h3 data-i18n="proc3Title">Räätälöinti ja asiakasportaali</h3>
-            <p data-i18n="proc3Text">
-              AutoClient mukautetaan teidän tarpeisiin ja pääsette dashboardiin.
-            </p>
+            <p data-i18n="proc3Text">AutoClient mukautetaan teidän tarpeisiin ja pääsette dashboardiin.</p>
           </div>
 
-          <div class="timeline-item card">
+          <div class="card process-card">
             <span class="timeline-step" data-i18n="day4">Päivä 9</span>
             <h3 data-i18n="proc4Title">Prospektointi käyntiin</h3>
-            <p data-i18n="proc4Text">
-              Kaikki on valmista, prospektointi alkaa ja ensimmäiset viestit lähtevät pian.
-            </p>
+            <p data-i18n="proc4Text">Kaikki on valmista, prospektointi alkaa ja ensimmäiset viestit lähtevät pian.</p>
           </div>
         </div>
       </div>
@@ -537,9 +528,9 @@
         <h4 data-i18n="footerNav">Navigaatio</h4>
         <ul class="footer-links">
           <li><a href="#product" data-i18n="navProduct">Tuote</a></li>
+          <li><a href="#showcase" data-i18n="navShowcase">Dashboard</a></li>
           <li><a href="#features" data-i18n="navFeatures">Ominaisuudet</a></li>
           <li><a href="#pricing" data-i18n="navPricing">Hinnoittelu</a></li>
-          <li><a href="#process" data-i18n="navProcess">Käyttöönotto</a></li>
         </ul>
       </div>
 
