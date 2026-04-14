@@ -6,7 +6,7 @@
   <title>Scalera Solutions | AutoClient</title>
   <meta
     name="description"
-    content="Scalera Solutions auttaa B2B-yrityksiä automatisoimaan prospektointia, outboundia ja myyntiprosessin alkuvaiheita AutoClientin avulla."
+    content="AutoClient rakentaa B2B-yrityksille systemaattisen outbound-järjestelmän: prospektitietokanta, ostosignaalit, jatkuva operointi ja läpinäkyvä dashboard."
   />
   <link rel="icon" type="image/webp" href="assets/logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,15 +56,17 @@
 
       <nav class="nav-links" id="navLinks">
         <a href="#product" data-i18n="navProduct">Tuote</a>
-        <a href="#how" data-i18n="navHow">Miten toimii</a>
         <a href="#showcase" data-i18n="navShowcase">Dashboard</a>
+        <a href="#how" data-i18n="navHow">Miten toimii</a>
         <a href="#pricing" data-i18n="navPricing">Hinnoittelu</a>
-        <a href="#contact" data-i18n="navContact">Varaa keskustelu</a>
+        <a href="#process" data-i18n="navProcess">Käyttöönotto</a>
 
         <div class="lang-switch" aria-label="Language switch">
           <button type="button" class="lang-btn active" data-lang-btn="fi">FI</button>
           <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
         </div>
+
+        <a href="#contact" class="btn btn-nav magnetic-btn" data-i18n="navContact">Varaa keskustelu</a>
       </nav>
     </div>
   </header>
@@ -73,92 +75,164 @@
     <section class="hero section reveal" id="hero">
       <div class="hero-spotlight"></div>
 
-      <div class="container hero-layout-clean">
-        <div class="hero-left">
+      <div class="container hero-layout">
+        <div class="hero-copy">
           <div class="eyebrow" data-i18n="heroEyebrow">AUTOCLIENT B2B-MYYNNIN ALKUVAIHEESEEN</div>
 
           <div class="hero-kicker-row">
             <span class="hero-kicker-pill">AI-assisted outbound</span>
-            <span class="hero-kicker-pill">Prospecting engine</span>
+            <span class="hero-kicker-pill">Signal-based outreach</span>
             <span class="hero-kicker-pill">CRM-ready</span>
           </div>
 
           <h1 data-i18n="heroTitle">
-            Myyntiä ilman manuaalista säätöä.
+            Rakennamme outboundista
+            järjestelmän — emme kampanjaa.
           </h1>
 
           <p class="hero-text" data-i18n="heroText">
-            AutoClient löytää oikeat yritykset, tunnistaa ostosignaalit ja hoitaa outreachin – jotta myynti voi keskittyä klousaamiseen.
+            AutoClient yhdistää koko asiakassegmentin tietokannan, ostosignaalit
+            ja jatkuvan outbound-operoinnin yhdeksi läpinäkyväksi kokonaisuudeksi.
           </p>
 
           <div class="hero-actions">
             <a href="#contact" class="btn btn-primary btn-shine magnetic-btn" data-i18n="heroBtnPrimary">Varaa demo</a>
-            <a href="#how" class="btn btn-secondary magnetic-btn" data-i18n="heroBtnSecondary">Katso miten toimii</a>
+            <a href="#pricing" class="btn btn-secondary magnetic-btn" data-i18n="heroBtnSecondary">Katso hinnoittelu</a>
           </div>
 
-          <div class="hero-stats-row">
-            <div class="mini-stat">
+          <div class="hero-proof-grid">
+            <div class="hero-proof-card">
+              <span class="hero-proof-label" data-i18n="proof1Label">Prospektit</span>
               <strong class="count-up" data-target="2184">0</strong>
-              <span data-i18n="miniStat1">prospektia löydetty</span>
+              <small data-i18n="proof1Text">Ajantasainen tietokanta</small>
             </div>
-            <div class="mini-stat">
+
+            <div class="hero-proof-card">
+              <span class="hero-proof-label" data-i18n="proof2Label">Kontaktoidut liidit</span>
               <strong class="count-up" data-target="1024">0</strong>
-              <span data-i18n="miniStat2">liidiä kontaktoitu</span>
+              <small data-i18n="proof2Text">Validoitu ennen lähetystä</small>
             </div>
-            <div class="mini-stat">
+
+            <div class="hero-proof-card">
+              <span class="hero-proof-label" data-i18n="proof3Label">Aikaa säästetty</span>
               <strong class="count-up" data-target="74" data-suffix="h">0</strong>
-              <span data-i18n="miniStat3">aikaa säästetty</span>
+              <small data-i18n="proof3Text">Manuaalinen työ vähenee</small>
             </div>
+          </div>
+
+          <div class="hero-scroll-indicator">
+            <span></span>
+            <p data-i18n="scrollText">Scrollaa alas</p>
           </div>
         </div>
 
-        <div class="hero-right">
-          <div class="hero-slider-shell card">
-            <div class="hero-slider-top">
-              <span class="slider-mini-label" data-i18n="sliderLabel">Miksi AutoClient</span>
-              <div class="slider-dots">
-                <button class="slider-dot active" data-slide="0" aria-label="Slide 1"></button>
-                <button class="slider-dot" data-slide="1" aria-label="Slide 2"></button>
-                <button class="slider-dot" data-slide="2" aria-label="Slide 3"></button>
-                <button class="slider-dot" data-slide="3" aria-label="Slide 4"></button>
+        <div class="hero-visual">
+          <div class="hero-dashboard card dashboard-card-main" id="heroDashboard">
+            <div class="window-top">
+              <div class="window-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="window-title">AutoClient Dashboard</div>
+              <div class="live-pill" data-i18n="dashboardLive">Live</div>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="metric-box">
+                <span data-i18n="metric1Label">Prospektit löydetty</span>
+                <strong>2,184</strong>
+                <small data-i18n="metric1Text">Ajantasainen tietokanta</small>
+              </div>
+
+              <div class="metric-box">
+                <span data-i18n="metric2Label">Liidejä kontaktoitu</span>
+                <strong>1,024</strong>
+                <small data-i18n="metric2Text">Validoitu ennen lähetystä</small>
+              </div>
+
+              <div class="metric-box">
+                <span data-i18n="metric3Label">Tapaamisia buukattu</span>
+                <strong>26</strong>
+                <small data-i18n="metric3Text">Korkean intentin liidejä</small>
+              </div>
+
+              <div class="metric-box">
+                <span data-i18n="metric4Label">Aikaa säästetty</span>
+                <strong>74h</strong>
+                <small data-i18n="metric4Text">Manuaalinen työ vähenee</small>
               </div>
             </div>
 
-            <div class="card-slider" id="cardSlider">
-              <article class="info-card active">
-                <div class="info-icon">🎯</div>
-                <h3 data-i18n="slide1Title">Oikeat prospektit</h3>
-                <p data-i18n="slide1Text">AutoClient etsii yritykset ja päättäjät, jotka sopivat juuri teidän kohderyhmään.</p>
-              </article>
+            <div class="dashboard-list">
+              <div class="list-row">
+                <div>
+                  <strong>Nordic Advisory Group</strong>
+                  <p data-i18n="lead1Text">Ostosignaali: rekrytointi + laajentuminen</p>
+                </div>
+                <span class="score-pill blue">92</span>
+              </div>
 
-              <article class="info-card">
-                <div class="info-icon">⚡</div>
-                <h3 data-i18n="slide2Title">Ostosignaalit</h3>
-                <p data-i18n="slide2Text">Tunnistaa yritykset, joilla on juuri nyt tarve tai ostovalmius.</p>
-              </article>
+              <div class="list-row">
+                <div>
+                  <strong>FinCore Partners</strong>
+                  <p data-i18n="lead2Text">Päättäjä tunnistettu</p>
+                </div>
+                <span class="score-pill purple">88</span>
+              </div>
 
-              <article class="info-card">
-                <div class="info-icon">🤖</div>
-                <h3 data-i18n="slide3Title">Automaattinen outreach</h3>
-                <p data-i18n="slide3Text">Personoidut viestit ja follow-upit lähtevät automaattisesti.</p>
-              </article>
-
-              <article class="info-card">
-                <div class="info-icon">📊</div>
-                <h3 data-i18n="slide4Title">Selkeä näkyvyys</h3>
-                <p data-i18n="slide4Text">Näet yhdestä paikasta mitä tapahtuu, mikä toimii ja mitä seuraavaksi tehdään.</p>
-              </article>
+              <div class="list-row">
+                <div>
+                  <strong>Axion Systems</strong>
+                  <p data-i18n="lead3Text">Kampanjavalmis kontaktijoukko</p>
+                </div>
+                <span class="score-pill">81</span>
+              </div>
             </div>
 
-            <div class="card-nav">
-              <button id="prevCard" aria-label="Edellinen">‹</button>
-              <button id="nextCard" aria-label="Seuraava">›</button>
+            <div class="mini-chart">
+              <div class="mini-chart-top">
+                <span data-i18n="chartTitle">Kampanjan suorituskyky</span>
+                <span data-i18n="chartRange">Viimeiset 30 pv</span>
+              </div>
+
+              <div class="chart-row">
+                <div class="chart-label-wrap">
+                  <span data-i18n="bar1Label">Avausaste</span>
+                  <strong>54%</strong>
+                </div>
+                <div class="chart-track"><div class="chart-fill blue-fill" style="width:54%"></div></div>
+              </div>
+
+              <div class="chart-row">
+                <div class="chart-label-wrap">
+                  <span data-i18n="bar2Label">Vastausaste</span>
+                  <strong>17%</strong>
+                </div>
+                <div class="chart-track"><div class="chart-fill purple-fill" style="width:17%"></div></div>
+              </div>
+
+              <div class="chart-row">
+                <div class="chart-label-wrap">
+                  <span data-i18n="bar3Label">Tapaamiskonversio</span>
+                  <strong>8%</strong>
+                </div>
+                <div class="chart-track"><div class="chart-fill" style="width:8%"></div></div>
+              </div>
             </div>
           </div>
 
-          <div class="floating-hero-note card">
-            <span data-i18n="floatNoteLabel">Nopeampi ensivaikutelma</span>
-            <strong data-i18n="floatNoteTitle">Selkeä arvolupaus heti</strong>
+          <div class="floating-card floating-card-1 card">
+            <span data-i18n="float1Title">Pipeline näkyvissä</span>
+            <strong data-i18n="float1Value">Selkeä dashboard</strong>
+          </div>
+
+          <div class="floating-card floating-card-2 card">
+            <span data-i18n="float2Title">Prosessi rullaa</span>
+            <strong data-i18n="float2Value">Systemaattisesti</strong>
+          </div>
+
+          <div class="floating-card floating-card-3 card">
+            <span>SYSTEM STATUS</span>
+            <strong>Operational</strong>
           </div>
         </div>
       </div>
@@ -167,102 +241,73 @@
     <section class="trust-strip reveal">
       <div class="trust-marquee">
         <div class="trust-marquee-track">
-          <span data-i18n="strip1">Prospektitietokanta</span>
-          <span data-i18n="strip2">Ostosignaalit</span>
-          <span data-i18n="strip3">Personoitu outbound</span>
-          <span data-i18n="strip4">Follow-up automaatio</span>
+          <span data-i18n="strip1">Koko segmentin tietokanta</span>
+          <span data-i18n="strip2">Ostosignaalihaku</span>
+          <span data-i18n="strip3">Jatkuva outbound-operointi</span>
+          <span data-i18n="strip4">CRM-integraatio</span>
           <span data-i18n="strip5">Läpinäkyvä dashboard</span>
-          <span data-i18n="strip6">CRM-valmis</span>
-          <span data-i18n="strip1">Prospektitietokanta</span>
-          <span data-i18n="strip2">Ostosignaalit</span>
-          <span data-i18n="strip3">Personoitu outbound</span>
-          <span data-i18n="strip4">Follow-up automaatio</span>
+          <span data-i18n="strip1">Koko segmentin tietokanta</span>
+          <span data-i18n="strip2">Ostosignaalihaku</span>
+          <span data-i18n="strip3">Jatkuva outbound-operointi</span>
+          <span data-i18n="strip4">CRM-integraatio</span>
           <span data-i18n="strip5">Läpinäkyvä dashboard</span>
-          <span data-i18n="strip6">CRM-valmis</span>
         </div>
       </div>
     </section>
 
     <section class="section reveal" id="product">
       <div class="container">
-        <div class="section-heading narrow center">
-          <div class="eyebrow" data-i18n="productEyebrow">YDINHYÖDYT</div>
-          <h2 data-i18n="productTitle">Miksi AutoClient toimii käytännössä</h2>
+        <div class="section-heading narrow">
+          <div class="eyebrow" data-i18n="productEyebrow">3 SELKEÄÄ ASIAA, JOITA TEEMME</div>
+          <h2 data-i18n="productTitle">AutoClient rakentaa myynnin alkuvaiheesta jatkuvan järjestelmän</h2>
           <p data-i18n="productText">
-            Tiivistetysti: vähemmän manuaalista työtä, ajankohtaisemmat liidit ja selkeämpi prosessi.
+            Ydin ei ole yksittäinen kampanja, vaan koneisto joka pysyy käynnissä,
+            oppii datasta ja rakentaa uusia keskusteluja tasaisesti.
           </p>
         </div>
 
-        <div class="benefit-grid compact">
+        <div class="benefit-grid">
           <article class="card benefit-card tilt-card">
             <div class="card-glow"></div>
-            <div class="benefit-icon">01</div>
-            <h3 data-i18n="productCard1Title">Vähemmän käsityötä</h3>
-            <p data-i18n="productCard1Text">Prospektointi, rikastus ja outreach eivät jää enää myyjien manuaaliseksi työksi.</p>
+            <div class="benefit-index">01</div>
+            <h3 data-i18n="productCard1Title">Koko asiakassegmentistä selkeä tietokanta</h3>
+            <p data-i18n="productCard1Text">
+              Rakennamme ja päivitämme tietokannan, jonka tavoitteena on kattaa
+              kaikki kohderyhmään kuuluvat yritykset ja päättäjät.
+            </p>
           </article>
 
           <article class="card benefit-card tilt-card">
             <div class="card-glow"></div>
-            <div class="benefit-icon">02</div>
-            <h3 data-i18n="productCard2Title">Ajankohtaisemmat liidit</h3>
-            <p data-i18n="productCard2Text">Ostosignaalit nostavat esiin yritykset, joihin kannattaa olla yhteydessä juuri nyt.</p>
+            <div class="benefit-index">02</div>
+            <h3 data-i18n="productCard2Title">Ostosignaalihaku ja oikea-aikaiset yhteydenotot</h3>
+            <p data-i18n="productCard2Text">
+              Tunnistamme ajankohtaiset prospektit ostosignaalien avulla, jotta
+              yhteydenotto tapahtuu silloin kun timing on paras.
+            </p>
           </article>
 
           <article class="card benefit-card tilt-card">
             <div class="card-glow"></div>
-            <div class="benefit-icon">03</div>
-            <h3 data-i18n="productCard3Title">Parempi näkyvyys</h3>
-            <p data-i18n="productCard3Text">Kaikki data, kampanjat ja tulokset näkyvät yhdestä ympäristöstä.</p>
+            <div class="benefit-index">03</div>
+            <h3 data-i18n="productCard3Title">Outboundin jatkuva operointi</h3>
+            <p data-i18n="productCard3Text">
+              Viestit, follow-upit, uudelleenkontaktointi ja keskustelujen
+              ylläpito rullaavat jatkuvana prosessina.
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt-section reveal" id="how">
-      <div class="container">
-        <div class="section-heading center">
-          <div class="eyebrow" data-i18n="howEyebrow">MITEN TOIMII</div>
-          <h2 data-i18n="howTitle">Yksinkertainen virta alusta tapaamisiin</h2>
-          <p data-i18n="howText">
-            AutoClient rakentuu muutamasta selkeästä vaiheesta, jotka yhdessä tekevät outboundista systemaattisempaa.
-          </p>
-        </div>
-
-        <div class="flow-grid">
-          <article class="card flow-card tilt-card">
-            <span class="flow-step">01</span>
-            <h3 data-i18n="flow1Title">Prospektit</h3>
-            <p data-i18n="flow1Text">Rakennetaan teidän asiakasprofiiliin sopiva yritys- ja kontaktikanta.</p>
-          </article>
-
-          <article class="card flow-card tilt-card">
-            <span class="flow-step">02</span>
-            <h3 data-i18n="flow2Title">Ostosignaalit</h3>
-            <p data-i18n="flow2Text">Tunnistetaan yritykset, joilla on juuri nyt relevantti tilanne tai tarve.</p>
-          </article>
-
-          <article class="card flow-card tilt-card">
-            <span class="flow-step">03</span>
-            <h3 data-i18n="flow3Title">Outreach</h3>
-            <p data-i18n="flow3Text">Viestit, follow-upit ja kontaktit etenevät suunnitelmallisesti.</p>
-          </article>
-
-          <article class="card flow-card tilt-card">
-            <span class="flow-step">04</span>
-            <h3 data-i18n="flow4Title">Tapaamiset</h3>
-            <p data-i18n="flow4Text">Myynti pääsee keskittymään keskusteluihin ja klousaamiseen.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="showcase">
+    <section class="section alt-section reveal" id="showcase">
       <div class="container">
         <div class="section-heading">
           <div class="eyebrow" data-i18n="showcaseEyebrow">DASHBOARD</div>
-          <h2 data-i18n="showcaseTitle">Kun haluat nähdä syvemmälle, dashboard näyttää kaiken</h2>
+          <h2 data-i18n="showcaseTitle">Näe mitä prosessissa oikeasti tapahtuu</h2>
           <p data-i18n="showcaseText">
-            Heti alussa emme kuormita käyttäjää dashboardilla, mutta alempana se toimii vahvana todisteena tuotteen vakavuudesta ja läpinäkyvyydestä.
+            Asiakasportaali näyttää kampanjat, yritykset, kontaktit, syväanalyysin
+            ja visualisoinnit yhdestä ympäristöstä.
           </p>
         </div>
 
@@ -270,18 +315,20 @@
           <div class="card feature-highlight-card tilt-card">
             <div class="card-glow"></div>
             <span class="mini-label" data-i18n="showcaseBox1Label">Selkeä käyttöliittymä</span>
-            <h3 data-i18n="showcaseBox1Title">Näet heti mitä tapahtuu</h3>
+            <h3 data-i18n="showcaseBox1Title">Dashboard, joka tekee prosessista läpinäkyvän</h3>
             <p data-i18n="showcaseBox1Text">
-              Kampanjat, löydetyt yritykset, kontaktit ja tilannekuva pysyvät yhdessä paikassa.
+              Näet mitä on tehty, mitä tapahtuu seuraavaksi ja miten kampanjat
+              oikeasti suoriutuvat.
             </p>
           </div>
 
           <div class="card feature-highlight-card tilt-card">
             <div class="card-glow"></div>
             <span class="mini-label" data-i18n="showcaseBox2Label">Parempi päätöksenteko</span>
-            <h3 data-i18n="showcaseBox2Title">Data auttaa kehittämään prosessia</h3>
+            <h3 data-i18n="showcaseBox2Title">Data auttaa optimoimaan strategiaa</h3>
             <p data-i18n="showcaseBox2Text">
-              Vastaukset, reply-rate, analyysit ja visualisoinnit kertovat nopeasti mikä toimii.
+              Yritysten tila, kontaktit ja visualisoinnit auttavat tekemään
+              outboundista jatkuvasti paremman.
             </p>
           </div>
         </div>
@@ -293,7 +340,7 @@
             </button>
             <div class="gallery-copy">
               <h3 data-i18n="gallery1Title">Kirjautuminen ja käyttöliittymä</h3>
-              <p data-i18n="gallery1Text">Selkeä ja moderni portaali, josta kokonaisuus avautuu heti hallittavana.</p>
+              <p data-i18n="gallery1Text">Selkeä portaali, josta kokonaisuus avautuu heti hallittavana.</p>
             </div>
           </article>
 
@@ -302,8 +349,8 @@
               <img src="assets/dashboard-table.webp" alt="AutoClient yritys- ja kontaktinäkymä" class="gallery-image" />
             </button>
             <div class="gallery-copy">
-              <h3 data-i18n="gallery2Title">Yritykset ja kontaktit</h3>
-              <p data-i18n="gallery2Text">Kampanjat, yritykset ja kontaktit näkyvät samassa näkymässä.</p>
+              <h3 data-i18n="gallery2Title">Yritykset, kontaktit ja syväanalyysi</h3>
+              <p data-i18n="gallery2Text">Kampanjat, löydetyt yritykset ja yrityskohtainen analyysi samassa näkymässä.</p>
             </div>
           </article>
 
@@ -312,21 +359,55 @@
               <img src="assets/dashboard-analytics.webp" alt="AutoClient analytiikkanäkymä" class="gallery-image" />
             </button>
             <div class="gallery-copy">
-              <h3 data-i18n="gallery3Title">Analytiikka</h3>
-              <p data-i18n="gallery3Text">Visualisoinnit ja jakaumat auttavat optimoimaan toimintaa.</p>
+              <h3 data-i18n="gallery3Title">Analytiikka ja visualisoinnit</h3>
+              <p data-i18n="gallery3Text">Visualisoinnit ja datanäkymät tukevat optimointia ja päätöksentekoa.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt-section reveal" id="pricing">
+    <section class="section reveal" id="how">
       <div class="container">
-        <div class="section-heading center">
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="howEyebrow">MITEN AUTOCLIENT TOIMII</div>
+          <h2 data-i18n="howTitle">Kolme vaihetta, jotka pysyvät käynnissä jatkuvasti</h2>
+          <p data-i18n="howText">
+            Prosessi ei pysähdy yhteen kampanjaan. AutoClient yhdistää tutkimuksen,
+            viestit ja operoinnin jatkuvaksi sykliksi.
+          </p>
+        </div>
+
+        <div class="process-flow">
+          <article class="card flow-card tilt-card">
+            <div class="flow-step">01</div>
+            <h3 data-i18n="flow1Title">Data ja analyysi</h3>
+            <p data-i18n="flow1Text">Järjestelmä hakee lisätietoja päättäjistä, rikastaa dataa ja tunnistaa ajankohtaiset prospektit.</p>
+          </article>
+
+          <article class="card flow-card tilt-card">
+            <div class="flow-step">02</div>
+            <h3 data-i18n="flow2Title">Personoidut viestit</h3>
+            <p data-i18n="flow2Text">Teidän kontekstiin koulutettu agentti kirjoittaa viestit oikeiden tietojen pohjalta.</p>
+          </article>
+
+          <article class="card flow-card tilt-card">
+            <div class="flow-step">03</div>
+            <h3 data-i18n="flow3Title">Jatkuva kontaktointi</h3>
+            <p data-i18n="flow3Text">Ensimmäinen viesti, follow-upit ja uudelleenkontaktointi rakentavat pipelinea tasaisesti.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="pricing">
+      <div class="container">
+        <div class="section-heading">
           <div class="eyebrow" data-i18n="pricingEyebrow">HINNOITTELU</div>
           <h2 data-i18n="pricingTitle">Aloita pilotilla tai rakenna jatkuva toimintamalli</h2>
           <p data-i18n="pricingText">
-            Kevyt aloitus, selkeä seuraava askel ja mahdollisuus skaalata myöhemmin.
+            Yhteistyö voidaan käynnistää pilotilla, jonka jälkeen kokonaisuutta
+            voidaan skaalata tarpeen mukaan.
           </p>
         </div>
 
@@ -335,11 +416,11 @@
             <div class="card-glow"></div>
             <div class="plan-name" data-i18n="planPilot">Pilotti</div>
             <h3>500€<span data-i18n="planVat"> + alv</span></h3>
-            <p class="plan-sub" data-i18n="pilotSub">Matala kynnys testata konsepti käytännössä</p>
+            <p class="plan-sub" data-i18n="pilotSub">Matalan kynnyksen tapa testata konsepti käytännössä</p>
             <ul class="pricing-list">
               <li data-i18n="pilot1">Prospekti-databasen rakentaminen</li>
               <li data-i18n="pilot2">Vähintään 500 prospektin kontaktointi</li>
-              <li data-i18n="pilot3">Follow-upit ja vastausten hallinta</li>
+              <li data-i18n="pilot3">Follow-upit, vastausten hallinta ja buukkaus</li>
               <li data-i18n="pilot4">Datan rikastus ja ostosignaalit</li>
             </ul>
           </article>
@@ -348,15 +429,23 @@
             <div class="card-glow"></div>
             <div class="featured-badge" data-i18n="featuredBadge">Suositeltu</div>
             <div class="plan-name">Basic</div>
-            <h3>1800€<span data-i18n="planQuarter"> / 3 kk</span></h3>
-            <p class="plan-sub" data-i18n="basicSub">Jatkuva järjestelmä ja suurempi volyymi</p>
+
+            <div class="pricing-toggle">
+              <button class="pricing-toggle-btn active" data-pricing="yearly" data-i18n="pricingYearly">Vuosittain</button>
+              <button class="pricing-toggle-btn" data-pricing="quarterly" data-i18n="pricingQuarterly">3 kk</button>
+            </div>
+
+            <h3><span id="basicPrice">6000€</span><span id="basicSuffix" data-i18n="priceYearSuffix"> / vuosi</span></h3>
+            <p class="plan-sub" data-i18n="basicSub">+ provisio alk. 70€/buukattu tapaaminen</p>
+
             <ul class="pricing-list">
-              <li data-i18n="basic1">Koko asiakasprofiilin kartoitus</li>
-              <li data-i18n="basic2">Jopa 1000 päättäjään kontaktointi / kk</li>
+              <li data-i18n="basic1">Koko asiakasprofiilin kartoitus ja prospektitietokannan rakentaminen</li>
+              <li data-i18n="basic2">Jopa 1000 päättäjään kontaktointi kuukaudessa</li>
               <li data-i18n="basic3">Ostosignaalihaku 2 viikon välein</li>
-              <li data-i18n="basic4">Prospektidatan jatkuva päivitys</li>
+              <li data-i18n="basic4">Prospektitietokannan päivitys 3 kuukauden välein</li>
               <li data-i18n="basic5">CRM-integraatio</li>
-              <li data-i18n="basic6">Tapaamisten buukkaus</li>
+              <li data-i18n="basic6">Vastaustenhallinta ja tapaamisten buukkaus</li>
+              <li data-i18n="basic7">Räätälöinti 2 erilliselle asiakassegmentille</li>
             </ul>
           </article>
 
@@ -367,12 +456,55 @@
             <p class="plan-sub" data-i18n="customSub">Skaalataan tarpeen mukaan</p>
             <ul class="pricing-list">
               <li data-i18n="custom1">Suurempi outbound-volyymi</li>
-              <li data-i18n="custom2">Useampi asiakassegmentti</li>
-              <li data-i18n="custom3">Useammin tapahtuva ostosignaalihaku</li>
-              <li data-i18n="custom4">Infra ja ylläpito</li>
-              <li data-i18n="custom5">Lisäautomaatioita</li>
+              <li data-i18n="custom2">Useammin tapahtuva ostosignaalihaku</li>
+              <li data-i18n="custom3">Useamman asiakassegmentin operointi</li>
+              <li data-i18n="custom4">Outbound-infrastruktuurin ulkoistaminen</li>
+              <li data-i18n="custom5">Domainit, inboxit ja Google Workspace -ympäristö</li>
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt-section reveal" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow" data-i18n="processEyebrow">KÄYTTÖÖNOTTO</div>
+          <h2 data-i18n="processTitle">Järjestelmä käyntiin noin 10 päivässä</h2>
+          <p data-i18n="processText">
+            Käyttöönotto etenee nopeasti: tiedot, kickoff, räätälöinti ja
+            käynnistys selkeällä aikataululla.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <div class="card process-card tilt-card">
+            <div class="card-glow"></div>
+            <span class="timeline-step" data-i18n="day1">Päivä 2</span>
+            <h3 data-i18n="proc1Title">Esitäytetty asiakas- ja ICP-lomake</h3>
+            <p data-i18n="proc1Text">Lähetämme lomakkeen esitäytettynä ja te tarkastatte sen.</p>
+          </div>
+
+          <div class="card process-card tilt-card">
+            <div class="card-glow"></div>
+            <span class="timeline-step" data-i18n="day2">Päivä 4</span>
+            <h3 data-i18n="proc2Title">Aloitustapaaminen</h3>
+            <p data-i18n="proc2Text">Suunnitellaan yhteydenottostrategia, asiakassegmentit ja integraatiot.</p>
+          </div>
+
+          <div class="card process-card tilt-card">
+            <div class="card-glow"></div>
+            <span class="timeline-step" data-i18n="day3">Päivä 6</span>
+            <h3 data-i18n="proc3Title">Räätälöinti ja asiakasportaali</h3>
+            <p data-i18n="proc3Text">AutoClient mukautetaan teidän asiakasprofiiliin ja tarpeisiin sopivaksi.</p>
+          </div>
+
+          <div class="card process-card tilt-card">
+            <div class="card-glow"></div>
+            <span class="timeline-step" data-i18n="day4">Päivä 9</span>
+            <h3 data-i18n="proc4Title">Prospektointi käyntiin</h3>
+            <p data-i18n="proc4Text">Kaikki on valmista ja ensimmäiset yhteydenotot lähtevät pian.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -382,9 +514,10 @@
         <div class="cta-box">
           <div class="cta-copy">
             <div class="eyebrow" data-i18n="ctaEyebrow">SEURAAVA ASKEL</div>
-            <h2 data-i18n="ctaTitle">Jos haluat ulos enemmän oikeita myyntikeskusteluja, tästä kannattaa aloittaa</h2>
+            <h2 data-i18n="ctaTitle">Valitse AutoClient, jos haluat yhdistää laadukkaan toteutuksen ja skaalautuvan järjestelmän</h2>
             <p data-i18n="ctaText">
-              Katsotaan nopeasti sopiiko AutoClient teidän myyntimalliin, asiakasprofiiliin ja kasvutavoitteisiin.
+              Katsotaan yhdessä, miten AutoClient sopii teidän myyntiprosessiin,
+              asiakasprofiiliin ja kasvutavoitteisiin.
             </p>
           </div>
 
@@ -402,7 +535,9 @@
       <div class="footer-brand">
         <img src="assets/logo.webp" alt="Scalera Solutions logo" class="footer-logo" />
         <p data-i18n="footerText">
-          Scalera Solutions rakentaa AI-avusteisia järjestelmiä, jotka tekevät B2B-prospektoinnista, outboundista ja myynnin alkuvaiheesta systemaattisempaa ja läpinäkyvämpää.
+          Scalera Solutions rakentaa AI-avusteisia järjestelmiä, jotka tekevät
+          B2B-prospektoinnista, outboundista ja myynnin alkuvaiheesta
+          systemaattisempaa ja läpinäkyvämpää.
         </p>
       </div>
 
@@ -410,8 +545,8 @@
         <h4 data-i18n="footerNav">Navigaatio</h4>
         <ul class="footer-links">
           <li><a href="#product" data-i18n="navProduct">Tuote</a></li>
-          <li><a href="#how" data-i18n="navHow">Miten toimii</a></li>
           <li><a href="#showcase" data-i18n="navShowcase">Dashboard</a></li>
+          <li><a href="#how" data-i18n="navHow">Miten toimii</a></li>
           <li><a href="#pricing" data-i18n="navPricing">Hinnoittelu</a></li>
         </ul>
       </div>
