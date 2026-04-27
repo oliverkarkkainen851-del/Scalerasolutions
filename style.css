@@ -1254,3 +1254,121 @@ select {
     padding: 22px;
   }
 }
+/* ============================================================
+   TRW × SALESFORCE STYLE LAYER
+   Appended to bottom of style.css — cascade overrides above.
+   Nothing above this line is modified.
+   ============================================================ */
+
+/* ── DESIGN TOKEN OVERRIDES ─────────────────────────────────── */
+:root {
+  --bg:          #020307;
+  --bg-soft:     #060b15;
+  --bg-soft-2:   #0a1220;
+  --panel:       rgba(6, 9, 18, 0.82);
+  --panel-2:     rgba(8, 14, 28, 0.93);
+
+  --line:        rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(212, 160, 23, 0.30);
+
+  --text:   #F8F4EC;
+  --muted:  #A9A090;
+  --muted-2:#6E6558;
+
+  /* Gold — TRW authority */
+  --gold:        #D4A017;
+  --gold-light:  #F0C040;
+  --gold-dark:   #9A7010;
+
+  /* Salesforce blue */
+  --sf-blue:      #00A1E0;
+  --sf-blue-dark: #032D60;
+  --sf-blue-mid:  #1589EE;
+
+  /* Reroute legacy vars */
+  --blue:      #1589EE;
+  --blue-soft: #00A1E0;
+  --purple:    #0D2B5E;
+  --cyan:      #00A1E0;
+
+  --radius:    18px;
+  --radius-lg: 26px;
+  --shadow:    0 40px 120px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(212, 160, 23, 0.06);
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────────────── */
+h1, h2 {
+  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background:
+    radial-gradient(circle at 5% 5%,   rgba(212, 160, 23, 0.10), transparent 26%),
+    radial-gradient(circle at 90% 10%,  rgba(21, 137, 238, 0.10), transparent 22%),
+    radial-gradient(circle at 50% 95%,  rgba(0, 161, 224, 0.07),  transparent 22%),
+    linear-gradient(180deg, #02030A 0%, #050912 35%, #07111E 68%, #08172A 100%);
+}
+
+/* ── BACKGROUNDS ────────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(212, 160, 23, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.bg-gradient-mesh {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(212, 160, 23, 0.09), transparent 22%),
+    radial-gradient(circle at 75% 22%, rgba(21, 137, 238, 0.09), transparent 20%),
+    radial-gradient(circle at 50% 85%, rgba(0, 161, 224, 0.07),  transparent 22%);
+}
+
+.orb-1 { background: rgba(212, 160, 23, 0.35); }
+.orb-2 { background: rgba(21, 137, 238, 0.22); }
+.orb-3 { background: rgba(0, 161, 224, 0.14); }
+
+.cursor-glow {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.09), rgba(212, 160, 23, 0.03), transparent 68%);
+}
+
+/* ── PAGE LOADER ────────────────────────────────────────────── */
+.page-loader {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(212, 160, 23, 0.12), transparent 22%),
+    linear-gradient(180deg, #020307 0%, #060b15 100%);
+}
+
+.loader-line span {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--sf-blue));
+}
+
+/* ── HEADER ─────────────────────────────────────────────────── */
+.site-header {
+  background: rgba(2, 3, 8, 0.72);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.08);
+}
+
+.site-header.scrolled {
+  background: rgba(2, 3, 8, 0.90);
+  border-bottom-color: rgba(212, 160, 23, 0.16);
+}
+
+.brand-logo {
+  filter: drop-shadow(0 0 18px rgba(212, 160, 23, 0.30));
+}
+
+.brand-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: upper
