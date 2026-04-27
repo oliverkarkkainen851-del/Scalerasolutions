@@ -1,0 +1,445 @@
+/style-override.css
+
+/* ============================================================
+   SCALERA SOLUTIONS — TRW × SALESFORCE STYLE OVERRIDE
+   Layer on top of style.css — adds only, modifies nothing.
+   Add to <head> AFTER: <link rel="stylesheet" href="style.css" />
+   ============================================================ */
+
+/* ── FONTS ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&display=swap');
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────── */
+:root {
+  /* Core backgrounds — deeper obsidian */
+  --bg:          #020307;
+  --bg-soft:     #060b15;
+  --bg-soft-2:   #0a1220;
+  --panel:       rgba(6, 9, 18, 0.80);
+  --panel-2:     rgba(8, 14, 28, 0.92);
+
+  /* Borders */
+  --line:        rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(212, 160, 23, 0.28);
+  --line-gold:   rgba(212, 160, 23, 0.45);
+
+  /* Type */
+  --text:   #F8F4EC;
+  --muted:  #A9A090;
+  --muted-2:#6E6558;
+
+  /* Gold palette — TRW power */
+  --gold:        #D4A017;
+  --gold-light:  #F0C040;
+  --gold-dark:   #9A7010;
+  --gold-glow:   rgba(212, 160, 23, 0.22);
+  --gold-glow-2: rgba(240, 192, 64, 0.12);
+
+  /* Salesforce blue palette */
+  --sf-blue:      #00A1E0;
+  --sf-blue-dark: #032D60;
+  --sf-blue-mid:  #1589EE;
+  --sf-glow:      rgba(0, 161, 224, 0.18);
+
+  /* Override legacy vars to reroute all gradient usage */
+  --blue:   #1589EE;
+  --blue-soft: #00A1E0;
+  --purple: #0D2B5E;
+  --cyan:   #00A1E0;
+
+  /* Radius — sharper, more aggressive */
+  --radius:    18px;
+  --radius-lg: 26px;
+
+  /* Shadow — deeper */
+  --shadow: 0 40px 120px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 160, 23, 0.06);
+
+  /* Transition */
+  --transition: 220ms cubic-bezier(.2, .8, .2, 1);
+}
+
+/* ── TYPOGRAPHY OVERRIDE ────────────────────────────────────── */
+h1, h2 {
+  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif !important;
+  letter-spacing: 0.01em !important;
+  font-weight: 400 !important;
+}
+
+h3 {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+}
+
+body {
+  font-family: 'Barlow', sans-serif !important;
+}
+
+/* ── GLOBAL BODY BACKGROUND ─────────────────────────────────── */
+body {
+  background:
+    radial-gradient(circle at 5% 5%,   rgba(212, 160, 23, 0.10), transparent 26%),
+    radial-gradient(circle at 90% 10%,  rgba(21, 137, 238, 0.10), transparent 22%),
+    radial-gradient(circle at 50% 95%,  rgba(0, 161, 224, 0.07),  transparent 22%),
+    linear-gradient(180deg, #02030A 0%, #050912 35%, #07111E 68%, #08172A 100%) !important;
+}
+
+/* ── BACKGROUND ORBS ────────────────────────────────────────── */
+.orb-1 { background: rgba(212, 160, 23, 0.35)  !important; }
+.orb-2 { background: rgba(21, 137, 238, 0.22)  !important; }
+.orb-3 { background: rgba(0, 161, 224, 0.14)   !important; }
+
+/* ── GRID & NOISE ───────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(212, 160, 23, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.025) 1px, transparent 1px) !important;
+  background-size: 52px 52px !important;
+}
+
+.bg-gradient-mesh {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(212, 160, 23, 0.09), transparent 22%),
+    radial-gradient(circle at 75% 22%, rgba(21, 137, 238, 0.09), transparent 20%),
+    radial-gradient(circle at 50% 85%, rgba(0, 161, 224, 0.07),  transparent 22%) !important;
+}
+
+/* ── CURSOR GLOW ────────────────────────────────────────────── */
+.cursor-glow {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.09), rgba(212, 160, 23, 0.03), transparent 68%) !important;
+}
+
+/* ── PAGE LOADER ────────────────────────────────────────────── */
+.page-loader {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(212, 160, 23, 0.12), transparent 22%),
+    linear-gradient(180deg, #020307 0%, #060b15 100%) !important;
+}
+
+.loader-line span {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--sf-blue)) !important;
+}
+
+/* ── SITE HEADER ────────────────────────────────────────────── */
+.site-header {
+  background: rgba(2, 3, 8, 0.72) !important;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.10) !important;
+}
+
+.site-header.scrolled {
+  background: rgba(2, 3, 8, 0.90) !important;
+  border-bottom-color: rgba(212, 160, 23, 0.18) !important;
+}
+
+.brand-logo {
+  filter: drop-shadow(0 0 18px rgba(212, 160, 23, 0.30)) !important;
+}
+
+.brand-name {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase;
+}
+
+.brand-sub {
+  color: var(--gold) !important;
+  letter-spacing: 0.14em !important;
+}
+
+/* Active nav link underline → gold */
+.nav-links a.active::after {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold)) !important;
+}
+
+/* Lang switch active btn */
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold)) !important;
+  box-shadow: 0 10px 25px rgba(212, 160, 23, 0.25) !important;
+}
+
+/* ── EYEBROW ────────────────────────────────────────────────── */
+.eyebrow {
+  color: var(--gold) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.22em !important;
+}
+
+.eyebrow::before {
+  background: linear-gradient(90deg, rgba(212, 160, 23, 0), var(--gold)) !important;
+}
+
+/* ── HERO H1 ────────────────────────────────────────────────── */
+.hero-copy h1 {
+  font-size: clamp(4rem, 8vw, 7.5rem) !important;
+  line-height: 0.9 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.hero-kicker-pill {
+  color: var(--gold-light) !important;
+  border-color: rgba(212, 160, 23, 0.20) !important;
+  background: rgba(212, 160, 23, 0.06) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+}
+
+/* Hero proof cards */
+.hero-proof-card::after {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.12), transparent 65%) !important;
+}
+
+.hero-proof-card strong {
+  color: var(--gold-light) !important;
+}
+
+.hero-proof-label {
+  color: var(--gold-dark) !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%) !important;
+  color: #0A0800 !important;
+  box-shadow: 0 16px 40px rgba(212, 160, 23, 0.35), 0 1px 0 rgba(255, 255, 255, 0.15) inset !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  font-size: 0.95rem !important;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 22px 55px rgba(212, 160, 23, 0.50), 0 1px 0 rgba(255, 255, 255, 0.15) inset !important;
+}
+
+.btn-nav {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  border-color: rgba(212, 160, 23, 0.20) !important;
+  color: var(--gold-light) !important;
+}
+
+.btn-nav:hover {
+  border-color: rgba(212, 160, 23, 0.45) !important;
+  background: rgba(212, 160, 23, 0.06) !important;
+  color: var(--gold-light) !important;
+}
+
+.btn-secondary {
+  border-color: rgba(21, 137, 238, 0.25) !important;
+  color: var(--sf-blue) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(21, 137, 238, 0.50) !important;
+  background: rgba(21, 137, 238, 0.07) !important;
+}
+
+/* ── CARD BASE ──────────────────────────────────────────────── */
+.card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    var(--panel) !important;
+  border-color: rgba(212, 160, 23, 0.10) !important;
+}
+
+.card:hover {
+  border-color: rgba(212, 160, 23, 0.25) !important;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.65), 0 0 40px rgba(212, 160, 23, 0.07) !important;
+}
+
+.card-glow {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.10), transparent 70%) !important;
+}
+
+/* ── HERO DASHBOARD CARD ────────────────────────────────────── */
+.dashboard-card-main::before {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 160, 23, 0.50),
+    rgba(21, 137, 238, 0.25),
+    rgba(0, 161, 224, 0.15)
+  ) !important;
+}
+
+.live-pill {
+  color: var(--gold-light) !important;
+  background: rgba(212, 160, 23, 0.12) !important;
+  border-color: rgba(212, 160, 23, 0.22) !important;
+}
+
+/* Score pills */
+.score-pill {
+  border-color: rgba(212, 160, 23, 0.16) !important;
+}
+
+.score-pill.blue {
+  color: #A8D8F5 !important;
+  background: rgba(21, 137, 238, 0.14) !important;
+}
+
+.score-pill.purple {
+  color: var(--gold-light) !important;
+  background: rgba(212, 160, 23, 0.12) !important;
+}
+
+/* ── TRUST MARQUEE ──────────────────────────────────────────── */
+.trust-strip {
+  border-color: rgba(212, 160, 23, 0.10) !important;
+  background: rgba(212, 160, 23, 0.02) !important;
+}
+
+.trust-marquee-track {
+  color: var(--gold-dark) !important;
+}
+
+.trust-marquee-track span {
+  position: relative;
+}
+
+.trust-marquee-track span::before {
+  content: '◆';
+  margin-right: 48px;
+  color: rgba(212, 160, 23, 0.30);
+  font-size: 0.55em;
+  vertical-align: middle;
+}
+
+/* ── SOLUTION SECTION ───────────────────────────────────────── */
+.solution-number {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold)) !important;
+  color: #0A0800 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 10px !important;
+}
+
+.mini-points li::before {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold)) !important;
+  border-radius: 2px !important;
+}
+
+/* ── SHOWCASE / GALLERY ─────────────────────────────────────── */
+.mini-label {
+  color: var(--gold) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.18em !important;
+}
+
+/* ── PRICING ────────────────────────────────────────────────── */
+.pricing-switch-btn.active {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold)) !important;
+  color: #0A0800 !important;
+}
+
+.plan-name {
+  color: var(--gold) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.22em !important;
+}
+
+.pricing-main {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 3rem !important;
+  letter-spacing: 0.02em !important;
+  color: var(--gold-light) !important;
+}
+
+.pricing-list li::before {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold)) !important;
+  border-radius: 2px !important;
+}
+
+.featured {
+  background:
+    linear-gradient(180deg, rgba(212, 160, 23, 0.08), rgba(9, 27, 58, 0.08)),
+    var(--panel-2) !important;
+  border-color: rgba(212, 160, 23, 0.30) !important;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7), 0 0 60px rgba(212, 160, 23, 0.10) !important;
+}
+
+.featured-badge {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold)) !important;
+  color: #0A0800 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+}
+
+/* ── PROCESS / TIMELINE ─────────────────────────────────────── */
+.timeline-step {
+  color: var(--sf-blue) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.20em !important;
+}
+
+/* ── CTA BOX ────────────────────────────────────────────────── */
+.cta-box {
+  border-color: rgba(212, 160, 23, 0.20) !important;
+  background:
+    linear-gradient(135deg, rgba(212, 160, 23, 0.08), rgba(21, 137, 238, 0.06)),
+    rgba(255, 255, 255, 0.02) !important;
+  box-shadow: var(--shadow), 0 0 100px rgba(212, 160, 23, 0.06) !important;
+}
+
+/* Gold divider line on top of CTA box */
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 6%; right: 6%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+
+/* ── SECTION HEADINGS ───────────────────────────────────────── */
+.section-heading h2 {
+  letter-spacing: 0.015em !important;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+.footer-grid {
+  border-top-color: rgba(212, 160, 23, 0.10) !important;
+}
+
+.site-footer h4 {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase;
+  color: var(--gold) !important;
+}
+
+.footer-links a:hover {
+  color: var(--gold-light) !important;
+}
+
+/* ── LIGHTBOX ───────────────────────────────────────────────── */
+.lightbox {
+  background: rgba(2, 3, 7, 0.94) !important;
+}
+
+.lightbox img {
+  border-color: rgba(212, 160, 23, 0.15) !important;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 60px rgba(212, 160, 23, 0.08) !important;
+}
+
+/* ── FLOATING CARDS ─────────────────────────────────────────── */
+.floating-card {
+  backgrou
