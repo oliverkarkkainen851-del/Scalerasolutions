@@ -1254,3 +1254,270 @@ select {
     padding: 22px;
   }
 }
+/* ═══════════════════════════════════════════════════════════
+   VIDEO INTRO SECTION + PRICING VAT NOTE
+   Appended — nothing above modified.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── VIDEO SECTION LAYOUT ───────────────────────────────────── */
+.video-intro-section {
+  padding-bottom: 80px;
+}
+
+.video-frame-wrap {
+  margin: 44px 0 52px;
+  display: flex;
+  justify-content: center;
+}
+
+.video-frame-inner {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(212, 160, 23, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(212, 160, 23, 0.07),
+    0 40px 120px rgba(0, 0, 0, 0.72),
+    0 0 80px rgba(212, 160, 23, 0.07);
+  background: #04060e;
+}
+
+/* Animated gold top-edge shimmer */
+.video-frame-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.video-frame-glow {
+  position: absolute;
+  inset: -80px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(212, 160, 23, 0.10), transparent 55%),
+    radial-gradient(circle at 50% 100%, rgba(21, 137, 238, 0.07), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.video-frame-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 4;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(6, 9, 18, 0.82);
+  border: 1px solid rgba(212, 160, 23, 0.25);
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.video-frame-player {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.video-frame-overlay {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  z-index: 4;
+}
+
+.video-unmute-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 160, 23, 0.22);
+  background: rgba(4, 6, 14, 0.80);
+  color: var(--muted);
+  font-size: 0.80rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all var(--transition);
+}
+
+.video-unmute-btn:hover {
+  border-color: rgba(212, 160, 23, 0.45);
+  color: var(--gold-light);
+  background: rgba(8, 12, 24, 0.90);
+}
+
+.video-unmute-btn.is-unmuted {
+  border-color: rgba(212, 160, 23, 0.45);
+  color: var(--gold-light);
+  background: rgba(212, 160, 23, 0.08);
+}
+
+.video-unmute-btn .mute-x-1,
+.video-unmute-btn .mute-x-2 {
+  transition: opacity var(--transition);
+}
+
+.video-unmute-btn.is-unmuted .mute-x-1,
+.video-unmute-btn.is-unmuted .mute-x-2 {
+  opacity: 0;
+}
+
+/* ── VIDEO POINTS GRID ──────────────────────────────────────── */
+.video-points-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.video-point-card {
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition), border var(--transition), box-shadow var(--transition);
+}
+
+/* Numbered gold accent line on card top */
+.video-point-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.video-point-card:hover::before {
+  opacity: 0.55;
+}
+
+.video-point-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(212, 160, 23, 0.07);
+  border: 1px solid rgba(212, 160, 23, 0.16);
+  color: var(--gold);
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+.video-point-step {
+  font-family: 'Barlow Condensed', 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.video-point-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.18rem;
+  letter-spacing: -0.02em;
+}
+
+.video-point-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.97rem;
+  line-height: 1.65;
+  flex: 1;
+}
+
+/* ── PRICING VAT NOTE ───────────────────────────────────────── */
+.pricing-vat-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  background: rgba(21, 137, 238, 0.05);
+  border: 1px solid rgba(21, 137, 238, 0.12);
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.pricing-vat-note svg {
+  flex-shrink: 0;
+  color: var(--sf-blue);
+  opacity: 0.75;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1180px) {
+  .video-points-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-point-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .video-point-icon {
+    margin-bottom: 0;
+  }
+
+  .video-point-card > div {
+    flex: 1;
+  }
+}
+
+@media (max-width: 860px) {
+  .video-point-card {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .video-point-icon {
+    margin-bottom: 18px;
+  }
+
+  .video-frame-badge {
+    font-size: 0.68rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .video-frame-inner {
+    border-radius: 16px;
+  }
+
+  .video-unmute-btn span {
+    display: none;
+  }
+
+  .video-unmute-btn {
+    padding: 9px 12px;
+  }
+}
