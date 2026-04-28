@@ -1254,3 +1254,448 @@ select {
     padding: 22px;
   }
 }
+/* ============================================================
+   TRW × SALESFORCE STYLE LAYER
+   Appended to bottom of style.css — cascade overrides above.
+   Nothing above this line is modified.
+   ============================================================ */
+
+/* ── DESIGN TOKEN OVERRIDES ─────────────────────────────────── */
+:root {
+  --bg:          #020307;
+  --bg-soft:     #060b15;
+  --bg-soft-2:   #0a1220;
+  --panel:       rgba(6, 9, 18, 0.82);
+  --panel-2:     rgba(8, 14, 28, 0.93);
+
+  --line:        rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(212, 160, 23, 0.30);
+
+  --text:   #F8F4EC;
+  --muted:  #A9A090;
+  --muted-2:#6E6558;
+
+  /* Gold — TRW authority */
+  --gold:        #D4A017;
+  --gold-light:  #F0C040;
+  --gold-dark:   #9A7010;
+
+  /* Salesforce blue */
+  --sf-blue:      #00A1E0;
+  --sf-blue-dark: #032D60;
+  --sf-blue-mid:  #1589EE;
+
+  /* Reroute legacy vars */
+  --blue:      #1589EE;
+  --blue-soft: #00A1E0;
+  --purple:    #0D2B5E;
+  --cyan:      #00A1E0;
+
+  --radius:    18px;
+  --radius-lg: 26px;
+  --shadow:    0 40px 120px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(212, 160, 23, 0.06);
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────────────── */
+h1, h2 {
+  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background:
+    radial-gradient(circle at 5% 5%,   rgba(212, 160, 23, 0.10), transparent 26%),
+    radial-gradient(circle at 90% 10%,  rgba(21, 137, 238, 0.10), transparent 22%),
+    radial-gradient(circle at 50% 95%,  rgba(0, 161, 224, 0.07),  transparent 22%),
+    linear-gradient(180deg, #02030A 0%, #050912 35%, #07111E 68%, #08172A 100%);
+}
+
+/* ── BACKGROUNDS ────────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(212, 160, 23, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.bg-gradient-mesh {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(212, 160, 23, 0.09), transparent 22%),
+    radial-gradient(circle at 75% 22%, rgba(21, 137, 238, 0.09), transparent 20%),
+    radial-gradient(circle at 50% 85%, rgba(0, 161, 224, 0.07),  transparent 22%);
+}
+
+.orb-1 { background: rgba(212, 160, 23, 0.35); }
+.orb-2 { background: rgba(21, 137, 238, 0.22); }
+.orb-3 { background: rgba(0, 161, 224, 0.14); }
+
+.cursor-glow {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.09), rgba(212, 160, 23, 0.03), transparent 68%);
+}
+
+/* ── PAGE LOADER ────────────────────────────────────────────── */
+.page-loader {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(212, 160, 23, 0.12), transparent 22%),
+    linear-gradient(180deg, #020307 0%, #060b15 100%);
+}
+
+.loader-line span {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--sf-blue));
+}
+
+/* ── HEADER ─────────────────────────────────────────────────── */
+.site-header {
+  background: rgba(2, 3, 8, 0.72);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.08);
+}
+
+.site-header.scrolled {
+  background: rgba(2, 3, 8, 0.90);
+  border-bottom-color: rgba(212, 160, 23, 0.16);
+}
+
+.brand-logo {
+  filter: drop-shadow(0 0 18px rgba(212, 160, 23, 0.30));
+}
+
+.brand-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.brand-sub {
+  color: var(--gold);
+  letter-spacing: 0.14em;
+}
+
+.nav-links a.active::after {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  box-shadow: 0 10px 25px rgba(212, 160, 23, 0.25);
+}
+
+/* ── EYEBROW ────────────────────────────────────────────────── */
+.eyebrow {
+  color: var(--gold);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.eyebrow::before {
+  background: linear-gradient(90deg, rgba(212, 160, 23, 0), var(--gold));
+}
+
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero-copy h1 {
+  font-size: clamp(4rem, 8vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+}
+
+.hero-kicker-pill {
+  color: var(--gold-light);
+  border-color: rgba(212, 160, 23, 0.20);
+  background: rgba(212, 160, 23, 0.06);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-proof-card::after {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.12), transparent 65%);
+}
+
+.hero-proof-card strong { color: var(--gold-light); }
+.hero-proof-label {
+  color: var(--gold-dark);
+  letter-spacing: 0.12em;
+}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 55%, var(--gold-light) 100%);
+  color: #0A0800;
+  box-shadow: 0 16px 40px rgba(212, 160, 23, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 22px 55px rgba(212, 160, 23, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary {
+  border-color: rgba(21, 137, 238, 0.25);
+  color: var(--sf-blue);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(21, 137, 238, 0.50);
+  background: rgba(21, 137, 238, 0.07);
+}
+
+.btn-nav {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-color: rgba(212, 160, 23, 0.20);
+  color: var(--gold-light);
+}
+
+.btn-nav:hover {
+  border-color: rgba(212, 160, 23, 0.45);
+  background: rgba(212, 160, 23, 0.06);
+}
+
+/* ── CARDS ──────────────────────────────────────────────────── */
+.card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    var(--panel);
+  border-color: rgba(212, 160, 23, 0.10);
+}
+
+.card:hover {
+  border-color: rgba(212, 160, 23, 0.25);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.65), 0 0 40px rgba(212, 160, 23, 0.07);
+}
+
+.card-glow {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.10), transparent 70%);
+}
+
+/* ── HERO DASHBOARD ─────────────────────────────────────────── */
+.dashboard-card-main::before {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 160, 23, 0.50),
+    rgba(21, 137, 238, 0.25),
+    rgba(0, 161, 224, 0.15)
+  );
+}
+
+.live-pill {
+  color: var(--gold-light);
+  background: rgba(212, 160, 23, 0.12);
+  border-color: rgba(212, 160, 23, 0.22);
+}
+
+.metric-box {
+  border-color: rgba(21, 137, 238, 0.10);
+}
+
+.metric-box strong { color: var(--sf-blue); }
+
+.window-dots span:nth-child(1) { background: rgba(212, 160, 23, 0.60); }
+.window-dots span:nth-child(2) { background: rgba(212, 160, 23, 0.35); }
+.window-dots span:nth-child(3) { background: rgba(212, 160, 23, 0.18); }
+
+.score-pill             { border-color: rgba(212, 160, 23, 0.16); }
+.score-pill.blue        { color: #A8D8F5; background: rgba(21, 137, 238, 0.14); }
+.score-pill.purple      { color: var(--gold-light); background: rgba(212, 160, 23, 0.12); }
+
+.floating-card          { background: rgba(6, 9, 16, 0.90); border-color: rgba(212, 160, 23, 0.18); }
+.floating-card strong   { color: var(--gold-light); }
+
+/* ── TRUST STRIP ────────────────────────────────────────────── */
+.trust-strip {
+  border-top-color:    rgba(212, 160, 23, 0.10);
+  border-bottom-color: rgba(212, 160, 23, 0.10);
+  background: rgba(212, 160, 23, 0.02);
+}
+
+.trust-marquee-track { color: var(--gold-dark); }
+
+/* ── SOLUTION ───────────────────────────────────────────────── */
+.solution-number {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: #0A0800;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  border-radius: 10px;
+}
+
+.mini-points li::before {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border-radius: 2px;
+}
+
+/* ── SHOWCASE ───────────────────────────────────────────────── */
+.mini-label {
+  color: var(--gold);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+/* ── PRICING ────────────────────────────────────────────────── */
+.pricing-switch-btn.active {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: #0A0800;
+}
+
+.plan-name {
+  color: var(--gold);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.pricing-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.02em;
+  color: var(--gold-light);
+}
+
+.pricing-list li::before {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border-radius: 2px;
+}
+
+.featured {
+  background:
+    linear-gradient(180deg, rgba(212, 160, 23, 0.08), rgba(9, 27, 58, 0.06)),
+    var(--panel-2);
+  border-color: rgba(212, 160, 23, 0.30);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.70), 0 0 60px rgba(212, 160, 23, 0.10);
+}
+
+.featured-badge {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: #0A0800;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+/* ── PROCESS ────────────────────────────────────────────────── */
+.timeline-step {
+  color: var(--sf-blue);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.20em;
+}
+
+/* ── CTA BOX ────────────────────────────────────────────────── */
+.cta-box {
+  border-color: rgba(212, 160, 23, 0.20);
+  background:
+    linear-gradient(135deg, rgba(212, 160, 23, 0.08), rgba(21, 137, 238, 0.06)),
+    rgba(255, 255, 255, 0.02);
+  box-shadow: var(--shadow), 0 0 100px rgba(212, 160, 23, 0.06);
+}
+
+/* Gold shimmer line on top edge of CTA */
+.cta-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 6%; right: 6%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+.footer-grid {
+  border-top-color: rgba(212, 160, 23, 0.10);
+}
+
+.site-footer h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer-links a:hover { color: var(--gold-light); }
+
+.footer-logo {
+  filter: drop-shadow(0 0 12px rgba(212, 160, 23, 0.22));
+}
+
+/* ── LIGHTBOX ───────────────────────────────────────────────── */
+.lightbox { background: rgba(2, 3, 7, 0.94); }
+.lightbox img {
+  border-color: rgba(212, 160, 23, 0.15);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(212, 160, 23, 0.08);
+}
+
+/* ── MOBILE NAV ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .nav-links {
+    border-color: rgba(212, 160, 23, 0.14);
+    background: rgba(2, 3, 9, 0.97);
+  }
+}
+
+/* ── GLOBAL UTILITIES ───────────────────────────────────────── */
+::selection {
+  background: rgba(212, 160, 23, 0.25);
+  color: var(--gold-light);
+}
+
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #020307; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold-dark), var(--sf-blue-dark));
+  border-radius: 999px;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 160, 23, 0); }
+  50%       { box-shadow: 0 0 28px 2px rgba(212, 160, 23, 0.10); }
+}
+
+.hero-proof-card                  { animation: goldPulse 4.0s ease-in-out infinite; }
+.hero-proof-card:nth-child(2)     { animation-delay: 1.4s; }
+.hero-proof-card:nth-child(3)     { animation-delay: 2.8s; }
+
+@keyframes goldBorderTrace {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+
+.featured::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--sf-blue-mid), var(--gold));
+  background-size: 300% 300%;
+  animation: goldBorderTrace 4s ease infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
