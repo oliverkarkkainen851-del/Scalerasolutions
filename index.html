@@ -198,7 +198,99 @@
         </div>
       </div>
     </section>
+<!-- ═══════════════════════════════════════════════════════
+     VIDEO INTRO SECTION — ADD AFTER .trust-strip </section>
+     ═══════════════════════════════════════════════════════ -->
+<section class="section video-intro-section reveal" id="video-intro">
+  <div class="container">
 
+    <div class="section-heading narrow">
+      <div class="eyebrow" data-i18n="videoEyebrow">AUTOCLIENT KÄYTÄNNÖSSÄ</div>
+      <h2 data-i18n="videoTitle">Katso miten AutoClient toimii</h2>
+      <p data-i18n="videoSubtitle">
+        Kolme minuuttia, joka selittää miksi systemaattinen outbound voittaa satunnaisen prospektoinnin aina.
+      </p>
+    </div>
+
+    <div class="video-frame-wrap">
+      <div class="video-frame-inner">
+        <div class="video-frame-glow"></div>
+        <div class="video-frame-badge" data-i18n="videoBadge">AutoClient · Demo</div>
+        <video
+          class="video-frame-player"
+          autoplay
+          muted
+          loop
+          playsinline
+          id="introVideo"
+        >
+          <source src="assets/intro-video.mov" type="video/mp4" />
+          <source src="assets/intro-video.mov" type="video/quicktime" />
+        </video>
+        <div class="video-frame-overlay">
+          <button class="video-unmute-btn" id="videoUnmuteBtn" aria-label="Ääni päälle/pois">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15" class="mute-x-1"></line>
+              <line x1="17" y1="9" x2="23" y2="15" class="mute-x-2"></line>
+            </svg>
+            <span data-i18n="videoMuteLabel">Ääni pois</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-points-grid">
+
+      <article class="card video-point-card tilt-card">
+        <div class="card-glow"></div>
+        <div class="video-point-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+            <path d="M8 21h8M12 17v4"></path>
+          </svg>
+        </div>
+        <div class="video-point-step" data-i18n="videoPoint1Step">01 — MITÄ TARJOAMME</div>
+        <h3 data-i18n="videoPoint1Title">Täydellinen outbound-järjestelmä</h3>
+        <p data-i18n="videoPoint1Text">
+          AutoClient rakentaa koko asiakassegmentin tietokannan, tunnistaa ostosignaalit ja operoi
+          jatkuvaa outboundia — alusta loppuun yhdessä kokonaisuudessa.
+        </p>
+      </article>
+
+      <article class="card video-point-card tilt-card">
+        <div class="card-glow"></div>
+        <div class="video-point-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <div class="video-point-step" data-i18n="videoPoint2Step">02 — MITEN TOIMITAMME</div>
+        <h3 data-i18n="videoPoint2Title">Nopea käyttöönotto, jatkuva operointi</h3>
+        <p data-i18n="videoPoint2Text">
+          Rakennamme prospektitietokannan, ajamme ostosignaalihaut, lähetämme personoidut
+          viestit ja hoidamme follow-upit — kaikki näkyvissä omassa dashboardissasi.
+        </p>
+      </article>
+
+      <article class="card video-point-card tilt-card">
+        <div class="card-glow"></div>
+        <div class="video-point-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+          </svg>
+        </div>
+        <div class="video-point-step" data-i18n="videoPoint3Step">03 — MITÄ SE TARKOITTAA SINULLE</div>
+        <h3 data-i18n="videoPoint3Title">Enemmän tapaamisia, vähemmän manuaalista työtä</h3>
+        <p data-i18n="videoPoint3Text">
+          Myyntiputki pysyy täynnä ilman jatkuvaa manuaalista prospektointia. Saat selkeän
+          näkyvyyden koko prosessiin ja pystyt kehittämään strategiaa datan pohjalta.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
     <section class="trust-strip reveal">
       <div class="trust-marquee">
         <div class="trust-marquee-track">
