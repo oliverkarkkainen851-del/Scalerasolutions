@@ -554,3 +554,87 @@ window.addEventListener("load", () => {
 });
 
 setTimeout(hideLoader, 2500);
+
+/* ═══════════════════════════════════════════════════════════
+   ADDITIONS — appended below existing code, nothing changed above
+   ═══════════════════════════════════════════════════════════ */
+
+/* 1. Quarterly price correction: 200€ → 2000€
+      Fires after the existing listener which sets 200€,
+      immediately correcting it to 2000€.                     */
+document.querySelectorAll('.pricing-switch-btn[data-pricing-mode="quarterly"]').forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (basicPlanPrice) basicPlanPrice.textContent = "2000€";
+  });
+});
+
+/* Also correct on initial load if quarterly is somehow the default */
+(function correctQuarterlyPrice() {
+  if (currentPricingMode === "quarterly" && basicPlanPrice) {
+    basicPlanPrice.textContent = "2000€";
+  }
+})();
+
+
+/* 2. Video section translations (extends existing translations object) */
+Object.assign(translations.fi, {
+  videoEyebrow:    "AUTOCLIENT KÄYTÄNNÖSSÄ",
+  videoTitle:      "Katso miten AutoClient toimii",
+  videoSubtitle:   "Kolme minuuttia, joka selittää miksi systemaattinen outbound voittaa satunnaisen prospektoinnin aina.",
+  videoBadge:      "AutoClient · Demo",
+  videoMuteLabel:  "Ääni pois",
+  videoUnmuteLabel:"Ääni päälle",
+  videoPoint1Step: "01 — MITÄ TARJOAMME",
+  videoPoint1Title:"Täydellinen outbound-järjestelmä",
+  videoPoint1Text: "AutoClient rakentaa koko asiakassegmentin tietokannan, tunnistaa ostosignaalit ja operoi jatkuvaa outboundia — alusta loppuun yhdessä kokonaisuudessa.",
+  videoPoint2Step: "02 — MITEN TOIMITAMME",
+  videoPoint2Title:"Nopea käyttöönotto, jatkuva operointi",
+  videoPoint2Text: "Rakennamme prospektitietokannan, ajamme ostosignaalihaut, lähetämme personoidut viestit ja hoidamme follow-upit — kaikki näkyvissä omassa dashboardissasi.",
+  videoPoint3Step: "03 — MITÄ SE TARKOITTAA SINULLE",
+  videoPoint3Title:"Enemmän tapaamisia, vähemmän manuaalista työtä",
+  videoPoint3Text: "Myyntiputki pysyy täynnä ilman jatkuvaa manuaalista prospektointia. Saat selkeän näkyvyyden koko prosessiin ja pystyt kehittämään strategiaa datan pohjalta.",
+  vatNote:         "Kaikki hinnat ovat ilman arvonlisäveroa (alv 0%).",
+});
+
+Object.assign(translations.en, {
+  videoEyebrow:    "AUTOCLIENT IN ACTION",
+  videoTitle:      "See how AutoClient works",
+  videoSubtitle:   "Three minutes that explain why systematic outbound always beats random prospecting.",
+  videoBadge:      "AutoClient · Demo",
+  videoMuteLabel:  "Mute",
+  videoUnmuteLabel:"Unmute",
+  videoPoint1Step: "01 — WHAT WE OFFER",
+  videoPoint1Title:"A complete outbound system",
+  videoPoint1Text: "AutoClient builds your full segment database, identifies buying signals and runs continuous outbound — end to end in one place.",
+  videoPoint2Step: "02 — HOW WE DELIVER IT",
+  videoPoint2Title:"Fast setup, always-on execution",
+  videoPoint2Text: "We build your prospect database, run signal searches, send personalized outreach and manage follow-ups — all visible in your own dashboard.",
+  videoPoint3Step: "03 — WHAT THIS MEANS FOR YOU",
+  videoPoint3Title:"More meetings, less manual work",
+  videoPoint3Text: "Your pipeline stays full without constant manual prospecting. You get clear visibility into the whole process and can improve strategy based on real data.",
+  vatNote:         "All prices are exclusive of VAT (0% VAT).",
+});
+
+/* Re-run setLanguage so new keys render immediately */
+setLanguage(htmlEl.lang || "fi");
+
+
+/* 3. Video mute/unmute toggle */
+const introVideo    = document.getElementById("introVideo");
+const videoUnmuteBtn = document.getElementById("videoUnmuteBtn");
+const muteLabelEl   = videoUnmuteBtn ? videoUnmuteBtn.querySelector("span") : null;
+
+if (videoUnmuteBtn && introVideo) {
+  videoUnmuteBtn.addEventListener("click", () => {
+    introVideo.muted = !introVideo.muted;
+    const lang = htmlEl.lang || "fi";
+
+    if (muteLabelEl) {
+      muteLabelEl.textContent = introVideo.muted
+        ? (translations[lang].videoMuteLabel   || "Mute")
+        : (translations[lang].videoUnmuteLabel || "Unmute");
+    }
+
+    videoUnmuteBtn.classList.toggle("is-unmuted", !introVideo.muted);
+  });
+}
